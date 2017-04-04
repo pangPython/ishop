@@ -5,13 +5,10 @@ include 'conn.php';
 $flag=0;
 
  ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0027)http://localhost/index.html -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name="verydows-baseurl" content="">
-<meta name="keywords" content="">
-<meta name="description" content="">
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>聚宝盆商城</title>
 <link rel="stylesheet" type="text/css" href="./images/general.css">
 <link rel="stylesheet" type="text/css" href="./images/index.css">
@@ -45,10 +42,10 @@ $flag=0;
   <div class="w1100">
     <!-- 头部主体开始 -->
     <div class="module cut">
-      <div class="logo fl"><a href="/index.php"><img alt="JUBAOPEN商城系统" src="./images/logo.gif" border="0"></a></div>
+      <div class="logo fl"><a href="/index.php"><img alt="" src="./images/logo.gif" border="0"></a></div>
       <!-- 头部搜索开始 -->
       <div class="top-search fl">
-        <form method="get" action="/search/index.html">
+        <form method="get" action="/search.php">
                     <div class="sf cut">
             <input class="fl" name="kw" type="text" value="" placeholder="双11提前购，畅想全年最低价">
             <button class="fr" type="submit">搜 索</button>
@@ -235,3 +232,6 @@ echo $row["price"]
 <div class="footer mt20">
 <script type="text/javascript" src="./images/juicer.js"></script>
 </body></html>
+<?php
+include 'db_close.php';
+ ?>
