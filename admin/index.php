@@ -1,36 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0032)http://localhost/user/login.html -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<meta name="verydows-baseurl" content="http://localhost">
-<meta name="keywords" content="用户登录">
-<meta name="description" content="用户登录">
 <title>管理员登录</title>
 <link rel="stylesheet" type="text/css" href="../images/general.css">
 <link rel="stylesheet" type="text/css" href="../images/login.css">
 <script type="text/javascript" src="../images/jquery.js"></script>
 <script type="text/javascript" src="../images/general.js"></script>
-<script type="text/javascript">
-function login(btn){
-  $('#username').vdsFieldChecker({rules:{required:[true, '请输入用户名']}, tipsPos:'abs'});
-  $('#password').vdsFieldChecker({rules:{required:[true, '请输入密码']}, tipsPos:'abs'});
-  if($('#captcha').size() > 0){
-    $('#captcha').vdsFieldChecker({rules: {required:[true, '请输入验证码']}, tipsPos:'abs'});
-  }
-  $('#login-form').vdsFormChecker({
-    beforeSubmit: function(){
-      vdsSetCipher('password', 'Verydows');
-      $(btn).addClass('disabled').text('正在登陆').prop('disabled', true);
-    }
-  });
-}
-
-function resetCaptcha(){
-  var src = "http://localhost/api/captcha/image?v=random";
-  $('#captcha-img').attr('src', src.replace('random', Math.random()));
-  $('#captcha').focus();
-}
-</script>
 </head>
 <body>
 <!-- 头部开始 -->

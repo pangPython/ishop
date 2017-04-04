@@ -145,7 +145,7 @@ $flag=0;
                       // 输出每行数据
                       while($row = $result->fetch_assoc()) {
                    ?>
-                    <li><a  href="/article.php?id=<?php echo $row['id']?>"><?php echo $row['title'] ?></a></li>
+                    <li><a  href="/article.php?wzid=<?php echo $row['id']?>"><?php echo $row['title'] ?></a></li>
                     <?php
                   }
                 }
