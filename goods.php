@@ -127,8 +127,6 @@ $(function(){
 });
 </script>
 
-   <script type="text/javascript" src="./images/md5.js"></script><!-- 用户登陆框结束 -->
-   <script type="text/javascript" src="./images/juicer.js"></script>
-
-
-   </body></html>
+<?php
+include 'db_close.php';
+ ?>

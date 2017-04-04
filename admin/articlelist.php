@@ -3,7 +3,7 @@ include '../conn.php';
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,9 +57,7 @@ include '../conn.php';
             <li class="active"><a href="/admin/articlelist.php">文章列表</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/index.php">进入前台 <span class="sr-only">(current)</span></a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

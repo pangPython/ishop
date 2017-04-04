@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2017-04-04 17:00:15
+Date: 2017-04-04 18:13:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,20 +55,36 @@ DROP TABLE IF EXISTS `goods`;
 CREATE TABLE `goods` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `goods_name` varchar(255) NOT NULL,
-  `price` float DEFAULT NULL,
+  `type` int(50) NOT NULL,
+  `price` float NOT NULL,
+  `info` text,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES ('1', '精品服装', '288.11');
-INSERT INTO `goods` VALUES ('2', '辣条', '2.5');
-INSERT INTO `goods` VALUES ('3', '汽车', '888888');
-INSERT INTO `goods` VALUES ('4', '电视', '2344');
-INSERT INTO `goods` VALUES ('5', '冰箱', '2131');
-INSERT INTO `goods` VALUES ('6', '洗衣机', '2588');
-INSERT INTO `goods` VALUES ('7', '空调', '1234.88');
+INSERT INTO `goods` VALUES ('1', '精品服装', '0', '288.11', null);
+INSERT INTO `goods` VALUES ('2', '辣条', '0', '2.5', null);
+INSERT INTO `goods` VALUES ('3', '汽车', '0', '888888', null);
+INSERT INTO `goods` VALUES ('4', '电视', '0', '2344', null);
+INSERT INTO `goods` VALUES ('5', '冰箱', '0', '2131', null);
+INSERT INTO `goods` VALUES ('6', '洗衣机', '0', '2588', null);
+INSERT INTO `goods` VALUES ('7', '空调', '0', '1234.88', null);
+
+-- ----------------------------
+-- Table structure for `goods_type`
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_type`;
+CREATE TABLE `goods_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of goods_type
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `orders`
@@ -115,14 +131,15 @@ CREATE TABLE `user` (
   `sex` varchar(20) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'test', '1234', '15766668888', '男', '124142@qq.com', '山东省');
-INSERT INTO `user` VALUES ('2', 'test1', '111111', '111111', '女', '123123@qq.com', '浙江省');
+INSERT INTO `user` VALUES ('1', 'test', '1234', '15766668888', '男', '124142@qq.com', '山东省', null);
+INSERT INTO `user` VALUES ('2', 'test1', '111111', '111111', '女', '123123@qq.com', '浙江省', null);
 
 -- ----------------------------
 -- Table structure for `wenzhang`
