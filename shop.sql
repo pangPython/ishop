@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2017-04-03 23:27:40
+Date: 2017-04-04 09:21:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -69,20 +69,21 @@ INSERT INTO `goods` VALUES ('6', '洗衣机', '2588');
 INSERT INTO `goods` VALUES ('7', '空调', '1234.88');
 
 -- ----------------------------
--- Table structure for `order`
+-- Table structure for `orders`
 -- ----------------------------
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order` (
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `goods_id` int(11) NOT NULL,
   `count` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of order
+-- Records of orders
 -- ----------------------------
+INSERT INTO `orders` VALUES ('1', '1', '1', '6');
 
 -- ----------------------------
 -- Table structure for `pay_method`
@@ -111,11 +112,12 @@ CREATE TABLE `user` (
   `email` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('1', 'test', '1234', '15766668888', '男', '124142@qq.com', '山东省');
 
 -- ----------------------------
 -- Table structure for `wenzhang`

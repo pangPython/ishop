@@ -47,7 +47,7 @@ function resetCaptcha(){
     <form method="post" action="/user/dologin.php" id="login-form">
       <input type="password" value="" class="hide">
       <div class="login ml530">
-        <h2 class="c666">用户登录</h2>
+        <h2 class="c666">用户注册</h2>
         <dl class="username mt20">
           <dt><i class="icon"></i></dt>
           <dd><input name="username" id="username" type="text" placeholder="请输入用户名"></dd>

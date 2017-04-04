@@ -1,20 +1,9 @@
 <?php
+session_start();
 include 'conn.php';
 //获取URL参数中的id
 $goods_id = $_REQUEST['id'];
-$sql = "select * from goods where id = '".$goods_id."'";
 
-
-  $result = $conn->query($sql);
-
-  if ($result->num_rows > 0) {
-      // 输出每行数据
-      while($row = $result->fetch_assoc()) {
-          echo $row['id'];
-      }
-  } else {
-      echo "0 个结果";
-  }
    ?>
    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
    <!-- saved from url=(0038)http://localhost/goods/index.html?id=5 -->
@@ -39,36 +28,7 @@ $sql = "select * from goods where id = '".$goods_id."'";
      });
    });
 
-   function addFavorite(id){
-     $.getJSON("http://localhost/api/favorite/add", {goods_id:id}, function(res){
-       if(res.status == 'success'){
-         $.vdsPopDialog({text: '加入收藏夹成功'});
-       }else if(res.status == 'unlogined'){
-         popLoginbar();
-       }else{
-         $.vdsPopDialog({type: 'err', text: '加入收藏夹失败'});
-       }
-     });
-   }
 
-   function showReviewList(page_id){
-     $.ajax({
-       type: 'post',
-       dataType: 'json',
-       url: "http://localhost/api/goods/reviews?goods_id=5",
-       data: {page:page_id},
-       success: function(res){
-         $('#reviews').empty();
-         if(res.status == 'success'){
-           $('#reviews').append(juicer($('#review-tpl').html(), res));
-           if(res.paging != null) $('#reviews').append(juicer($('#review-paging-tpl').html(), res));
-         }
-         else{
-           $('#reviews').append('<p class="aln-c c999">暂无评价...</p>');
-         }
-       }
-     });
-   }
 
    function reviewPageTurn(page_id){showReviewList(page_id);}
    function reviewPageJump(e){showReviewList($(e).prev('input').val())}
@@ -118,25 +78,42 @@ $sql = "select * from goods where id = '".$goods_id."'";
 
            <div class="cross cut">
              <ul>
-               <li><a href="http://localhost/">首页</a></li>
-                         </ul>
+
+
+               <?php
+               if(isset($_REQUEST['uid'])){
+                 $uid = $_REQUEST['uid'];
+
+
+               // echo $_SESSION['uid'.$uid];
+               // exit;
+               if(isset($_SESSION['uid'.$uid]))
+               {
+                  ?>
+                  <li><a href="/index.php?uid=<?php echo $uid?>">首页</a></li>
+                  <li><a href="/user/center.php?uid=<?php echo $uid?>">用户中心</a></li>
+                 <li><a href="/logout.php?uid=<?php echo $uid?>">退出</a></li>
+                  <?php
+
+                }
+              }
+                else
+                {?>
+                  <li><a href="./user/login.php">登录</a></li>
+                  <li><a href="/regist.php">注册</a></li>
+                  <?php
+
+                 }
+               ?>
+
+                </ul>
            </div>
          </div>
          <!-- 导航结束 -->
        </div>
      </div>
    </div><!-- 头部结束 -->
-   <div class="loc w1100">
-     <div>
-       <a href="http://localhost/">网站首页</a>
-       <b>&gt;</b>
-           <a href="http://localhost/category/index.html?id=1">服装</a>
-       <b>&gt;</b>
-           <a href="http://localhost/category/index.html?id=15">T恤</a>
-       <b>&gt;</b>
-           <font>浅灰色T恤女士上衣</font>
-     </div>
-   </div>
+
    <!-- 主体开始 -->
    <div class="container w1100 mt10">
      <div class="gtds cut">
@@ -153,44 +130,71 @@ $sql = "select * from goods where id = '".$goods_id."'";
            <div class="tmb mt10 cut">
              <a class="tmb-arrow lh disabled" id="tmb-back-btn"><i class="icon">&lt;</i></a>
              <div class="tmb-im cut">
-               <div class="module cut" id="thumb-container">
-                 <a class="cur"><img alt="浅灰色T恤女士上衣" src="./images/9658d66b91d2f3e(2).jpg"></a>
-                                             <a><img alt="浅灰色T恤女士上衣" src="./images/3458d66b9dd5515(1).jpg"></a>
-                                           </div>
+
              </div>
              <a class="tmb-arrow rh disabled" id="tmb-forward-btn"><i class="icon">&gt;</i></a>
            </div>
          </div>
          <!-- 商品图片结束 -->
-         <div class="social mt20"><a onclick="addFavorite(5)"><i class="favor icon"></i><font>收藏</font></a></div>
+
        </div>
        <div class="gtbox cut">
-         <h1>浅灰色T恤女士上衣</h1>
-         <p class="mt8 c888"></p><p>浅灰色T恤女士上衣</p><p></p>
+<?php
+$sql = "select * from goods where id = '".$goods_id."'";
+
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+      // 输出每行数据
+      while($row = $result->fetch_assoc()) {
+
+          ?>
+
+
+         <h1>
+
+         </h1>
+         <p class="mt8 c888"></p><p style="font-size:30px">
+<?php
+echo $row['goods_name'];
+ ?>
+         </p><p></p>
          <div class="gatt module mt10 cut">
            <dl>
-             <dt>商品货号:</dt>
-             <dd>0150004763</dd>
+             <dt>商品ID:</dt>
+             <dd>
+<?php
+  echo $row['id'];
+ ?>
+             </dd>
            </dl>
+
                    <dl class="mt5">
-             <dt>原<span class="sep-24"></span>价:</dt>
-             <dd class="opri"><i>¥</i>99.00</dd>
-           </dl>
-                   <dl class="mt5">
-             <dt>今日售价:</dt>
-             <dd class="npri"><i>¥</i><font id="nowprice" data-price="89.00">89.00</font></dd>
+             <dt>价格:</dt>
+             <dd class="npri"><i>¥</i><font id="nowprice" data-price="89.00">
+<?php echo $row['price']; ?>
+
+             </font></dd>
            </dl>
                  </div>
+                 <?php
+             }
+         } else {
+             echo "0 个结果";
+         }
+        ?>
          <div class="cutline mt10"></div>
          <div class="gatt module">
-                   <form method="post" action="http://localhost/cart/index.html" id="buy-form">
+  <form method="post" action="/user/buy.php?gid=<?php echo $goods_id?>&uid=<?php echo $uid?>" id="buy-form">
            <dl class="mt15">
              <dt>购买数量:</dt>
-             <dd class="qty" id="buy-qty">
-               <button type="button">-</button><input name="qty" class="aln-c" type="text" value="1" data-stock="9999"><button type="button">+</button>
+             <dd >
+               <input name="count"  type="text">
                <font class="c999 ml5">件</font>
              </dd>
            </dl>
+           <input type="submit"  value="立即购买">
+           <a href="/user/addcart.php">加入购物车</a>
            </form>
          </div>
          <div class="buy mt30"><a class="add-cart icon" onclick="addToCart(this, &#39;5&#39;)">加入购物车</a><a class="buy-now icon" onclick="toBuy(&#39;5&#39;, &#39;http://localhost/cart/index.html&#39;)">立即购买</a></div>
@@ -202,25 +206,7 @@ $sql = "select * from goods where id = '".$goods_id."'";
 
        </div>
        <!-- 左边结束 -->
-       <!-- 详情开始 -->
-       <div class="details cut">
-         <div class="tabs cut">
-           <ul id="contabs">
-             <li class="cur">商品介绍</li>
-             <li>规格参数</li>
 
-           </ul>
-         </div>
-         <div class="content"><p>浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣浅灰色T恤女士上衣<img src="./images/58d66bb1e5779nfxJo04m3K60346.jpg" _src="http://localhost/upload/goods/editor/1703/58d66bb1e5779nfxJo04m3K60346.jpg"></p></div>
-         <!-- 规格参数开始 -->
-         <div class="content hide">
-           <div class="speci">
-                     </div>
-         </div>
-         <!-- 规格参数结束 -->
-
-       </div>
-       <!-- 详情结束 -->
      </div>
      <div class="cl"></div>
 

@@ -1,5 +1,9 @@
 <?php
+session_start();
 include 'conn.php';
+
+$flag=0;
+
  ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0027)http://localhost/index.html -->
@@ -67,8 +71,32 @@ include 'conn.php';
         <div class="cross cut">
           <ul>
             <li><a href="http://localhost/">首页</a></li>
-                      <li><a href="./login.php">登录</a></li>
-					  <li><a href="/regist.php">注册</a></li>
+            <?php
+            if(isset($_REQUEST['uid'])){
+              $uid = $_REQUEST['uid'];
+
+
+            // echo $_SESSION['uid'.$uid];
+            // exit;
+            if(isset($_SESSION['uid'.$uid]))
+            {
+              $flag=1;
+	             ?>
+               <li><a href="./user/center.php?uid=<?php echo $uid?>">用户中心</a></li>
+              <li><a href="/logout.php?uid=<?php echo $uid?>">退出</a></li>
+               <?php
+
+             }
+           }
+             else
+             {?>
+               <li><a href="./user/login.php">登录</a></li>
+               <li><a href="/regist.php">注册</a></li>
+               <?php
+
+              }
+            ?>
+
 			</ul>
         </div>
       </div>
@@ -135,8 +163,16 @@ if ($result->num_rows > 0) {
 
         ?>
         <li>
-      <div class="im"><a href="./goods.php?id=<?php echo $row["id"]?>"><img alt="浅灰色T恤女士上衣" src="./images/9658d66b91d2f3e.jpg"></a></div>
-      <h3><a href="./goods.php?id=<?php echo $row["id"]?>">
+      <div class="im"><a href="./goods.php?id=<?php echo $row["id"];
+          if($flag==1){
+            echo '&uid='.$uid;
+          }
+      ?>"><img alt="浅灰色T恤女士上衣" src="./images/9658d66b91d2f3e.jpg"></a></div>
+      <h3><a href="./goods.php?id=<?php echo $row["id"];
+      if($flag==1){
+        echo '&uid='.$uid;
+      }
+      ?>">
 <?php
 echo $row["goods_name"];
  ?>
