@@ -38,27 +38,31 @@ exit;
 <div class="container w1100">
 
       <br>  <br>  <br>  <br>
-      <ul>
 
-
-<?php
-$sql = "SELECT * FROM orders where user_id = ".$uid;
-// echo $sql;
-// exit;
-$result = $conn->query($sql);
-if (isset($result->num_rows) && ($result->num_rows > 0)) {
-while($row = $result->fetch_assoc()) {
-
+      <?php
+      $file = $_FILES['file'];//得到传输的数据
+      //得到文件名称
+      $name = $file['name'];
+      $type = strtolower(substr($name,strrpos($name,'.')+1)); //得到文件类型，并且都转化成小写
+      $allow_type = array('jpg','jpeg','gif','png'); //定义允许上传的类型
+      //判断文件类型是否被允许上传
+      if(!in_array($type, $allow_type)){
+        //如果不被允许，则直接停止程序运行
+        return ;
+      }
+      //判断是否是通过HTTP POST上传的
+      if(!is_uploaded_file($file['tmp_name'])){
+        //如果不是通过HTTP POST上传的
+        return ;
+      }
+      $upload_path = "./touxiang/"; //上传文件的存放路径
+      //开始移动文件到相应的文件夹
+      if(move_uploaded_file($file['tmp_name'],$upload_path.$file['name'])){
+        echo "头像上传成功!";
+      }else{
+        echo "头像上传失败!";
+      }
 ?>
-<li><a href="#" style="font-size:23px">订单id:<?php echo $row['id'].'  '; ?>货物id:<?php echo $row['goods_id'].'  ' ?>用户id:<?php echo $row['user_id']; ?></a></li>
-<?php
-
-}
-}else{
-  echo "没有订单";
-}
- ?>
- </ul>
 </div>
 <!-- 页脚开始 -->
 <?php include '../footer.php'; ?>

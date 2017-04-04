@@ -21,7 +21,7 @@
 <div class="container w900 mt20">
   <div class="wbox cut">
     <div class="login-banner fl cut"></div>
-    <form method="post" action="/user/dologin.php" id="login-form">
+    <form method="post" action="dologin.php" id="login-form">
       <input type="password" value="" class="hide">
       <div class="login ml530">
         <h2 class="c666">管理员登录</h2>

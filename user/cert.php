@@ -17,7 +17,7 @@ exit;
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>上传头像</title>
+  <title>聚宝盆商城</title>
   <link rel="stylesheet" type="text/css" href="../images/general.css">
   <link rel="stylesheet" type="text/css" href="../images/index.css">
   <script type="text/javascript" src="../images/jquery.js"></script>
@@ -32,13 +32,22 @@ exit;
 <!-- 头部结束 -->
 <!-- 主体开始 -->
 <div class="container w1100">
-
+  <p style="font-size:30px">我的购物车</p>
       <br>  <br>  <br>  <br>
-      <form action="doupload.php?uid=<?php echo $uid;?>" name="form" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" />
-        <input type="submit" name="submit" value="上传" />
-      </form>
+<?php
+$sql = "SELECT * FROM cert where user_id = ".$uid;
+$result = $conn->query($sql);
 
+if ($result->num_rows > 0) {
+while($row = $result->fetch_assoc()) {
+
+  echo "<p style='font-size:30px'>用户id：".$row['user_id']."<br>商品id:".$row['goods_id']."<br>数量:".$row['count']."</p>";
+
+}
+}
+ ?>
+<p style='font-size:30px'><a href="/user/upload.php">全部付款</a></p>
+<p style='font-size:30px'><a href="/user/order.php">清空购物车</a></p>
 </div>
 <!-- 页脚开始 -->
 <div class="footer mt20">

@@ -1,9 +1,14 @@
 <?php
 session_start();
 include '../conn.php';
+if (!isset($_REQUEST['uid'])||!isset($_REQUEST['gid'])||!isset($_REQUEST['count'])) {
+  echo "非法访问！";
+  exit;
+}
 $uid=$_REQUEST['uid'];
-
-$sql = "SELECT * FROM user where id = '".$uid."'";
+$gid = $_REQUEST['gid'];
+$count = $_REQUEST['count'];
+$sql = "SELECT * FROM user where id = ".$uid;
 $result = $conn->query($sql);
 
 if ($result->num_rows <= 0) {
@@ -17,7 +22,7 @@ exit;
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>上传头像</title>
+  <title>我的订单</title>
   <link rel="stylesheet" type="text/css" href="../images/general.css">
   <link rel="stylesheet" type="text/css" href="../images/index.css">
   <script type="text/javascript" src="../images/jquery.js"></script>
@@ -34,13 +39,18 @@ exit;
 <div class="container w1100">
 
       <br>  <br>  <br>  <br>
-      <form action="doupload.php?uid=<?php echo $uid;?>" name="form" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" />
-        <input type="submit" name="submit" value="上传" />
-      </form>
 
+      <?php
+      //添加成功
+      //添加失败
+      $sql = "INSERT INTO cert(user_id,goods_id,count) VALUES(".$uid.",".$gid.",".$count.")";
+
+      if ($conn->query($sql) === TRUE) {
+          echo "添加购物车成功！";
+      }else {
+        echo "添加购物车失败！";
+      }
+?>
 </div>
 <!-- 页脚开始 -->
-<div class="footer mt20">
-<script type="text/javascript" src="../images/juicer.js"></script>
-</body></html>
+<?php include '../footer.php'; ?>

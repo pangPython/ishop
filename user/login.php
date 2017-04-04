@@ -1,15 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0032)http://localhost/user/login.html -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name="verydows-baseurl" content="http://localhost">
-<meta name="keywords" content="用户登录">
-<meta name="description" content="用户登录">
-<title>用户登录</title>
-<link rel="stylesheet" type="text/css" href="../images/general.css">
-<link rel="stylesheet" type="text/css" href="../images/login.css">
-<script type="text/javascript" src="../images/jquery.js"></script>
-<script type="text/javascript" src="../images/general.js"></script>
+<!DOCTYPE>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>用户登录</title>
+  <link rel="stylesheet" type="text/css" href="../images/general.css">
+  <link rel="stylesheet" type="text/css" href="../images/login.css">
+  <script type="text/javascript" src="../images/jquery.js"></script>
+  <script type="text/javascript" src="../images/general.js"></script>
 </head>
 <body>
 <!-- 头部开始 -->
