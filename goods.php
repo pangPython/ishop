@@ -30,11 +30,10 @@ $goods_id = $_REQUEST['id'];
          <!-- 商品图片开始 -->
          <div class="module">
            <div class="im cut">
-             <div id="goods-imgarea" style="position: relative; overflow: hidden;"><img src="./images/9658d66b91d2f3e.jpg"><img src="./images/9658d66b91d2f3e(1).jpg" class="zoomImg" style="position: absolute; top: 0px; left: 45.5px; opacity: 0; width: 300px; height: 300px; border: none; max-width: none; max-height: none;"></div>
-             <ul class="hide" id="goods-imgsrc">
-               <li data-zoom="http://localhost/upload/goods/prime/0/9658d66b91d2f3e.jpg"><img src="./images/9658d66b91d2f3e.jpg"></li>
-                                       <li data-zoom="http://localhost/upload/goods/album/0/3458d66b9dd5515.jpg"><img src="./images/3458d66b9dd5515.jpg"></li>
-                                     </ul>
+             <div id="goods-imgarea" style="position: relative; overflow: hidden;">
+               <img src="./images/latiao.jpg" width="350px">
+               </div>
+
              <i class="zoom icon"></i> </div>
            <div class="tmb mt10 cut">
              <a class="tmb-arrow lh disabled" id="tmb-back-btn"><i class="icon">&lt;</i></a>
