@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2017-04-04 09:21:22
+Date: 2017-04-04 10:32:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -130,8 +130,11 @@ CREATE TABLE `wenzhang` (
   `author` varchar(255) NOT NULL,
   `time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wenzhang
 -- ----------------------------
+INSERT INTO `wenzhang` VALUES ('1', '测试', '合适测试', 'dmin', '2017-04-04 10:30:22');
+INSERT INTO `wenzhang` VALUES ('2', '测试文章', '这是测试内容', 'admin', '2017-04-04 10:30:47');
+INSERT INTO `wenzhang` VALUES ('3', '聚宝盆商城', '额是接口后可', '匿名', '2017-04-04 10:31:23');

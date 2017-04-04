@@ -5,7 +5,7 @@
 <meta name="verydows-baseurl" content="http://localhost">
 <meta name="keywords" content="用户登录">
 <meta name="description" content="用户登录">
-<title>用户登陆 - JUBAOPEN商城系统</title>
+<title>管理员登录</title>
 <link rel="stylesheet" type="text/css" href="../images/general.css">
 <link rel="stylesheet" type="text/css" href="../images/login.css">
 <script type="text/javascript" src="../images/jquery.js"></script>
@@ -47,7 +47,7 @@ function resetCaptcha(){
     <form method="post" action="/user/dologin.php" id="login-form">
       <input type="password" value="" class="hide">
       <div class="login ml530">
-        <h2 class="c666">用户登录</h2>
+        <h2 class="c666">管理员登录</h2>
         <dl class="username mt20">
           <dt><i class="icon"></i></dt>
           <dd><input name="username" id="username" type="text" placeholder="请输入用户名"></dd>
@@ -62,7 +62,6 @@ function resetCaptcha(){
           <div class="fr"></div>
         </div>
         <input class="form-submit aln-c radius4 mt20" type="submit" value="登录">
-        <div class="c999 mt20">您还没有账号？ 立即<a class="ml5" href="http://localhost/user/register.html">免费注册</a></div>
 
       </div>
     </form>
