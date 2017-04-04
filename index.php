@@ -91,7 +91,7 @@ $flag=0;
              else
              {?>
                <li><a href="./user/login.php">登录</a></li>
-               <li><a href="/regist.php">注册</a></li>
+               <li><a href="/user/regist.php">注册</a></li>
                <?php
 
               }
@@ -135,11 +135,21 @@ $flag=0;
     <!-- 资讯开始 -->
     <div class="w240 fr cut">
       <div class="news mt10">
-        <h2><a href="http://localhost/article/index.html" class="fr">更多 <i>&gt;</i></a>最新资讯</h2>
+        <h2><a href="/articles.php" class="fr">更多 <i>&gt;</i></a>最新资讯</h2>
                 <ul>
-                    <li><a title="降价降价了" href="http://localhost/article/view.html?id=3"><b>[公告]</b>降价降价了</a></li>
-                    <li><a title="特卖女装上市T恤修身浅灰系列" href="http://localhost/article/view.html?id=2"><b>[促销活动]</b>特卖女装上市T恤修身浅灰系列</a></li>
-                    <li><a title="华为新机发布，震撼上市HUAWEI P10 ，人像摄影大师" href="http://localhost/article/view.html?id=1"><b>[新闻]</b>华为新机发布，震撼上市HUAWEI P10 ，人像摄影大师</a></li>
+                  <?php
+                  $sql = "SELECT * FROM wenzhang limit 3";
+                  $result = $conn->query($sql);
+
+                  if ($result->num_rows > 0) {
+                      // 输出每行数据
+                      while($row = $result->fetch_assoc()) {
+                   ?>
+                    <li><a  href="/article.php?id=<?php echo $row['id']?>"><?php echo $row['title'] ?></a></li>
+                    <?php
+                  }
+                }
+                     ?>
                   </ul>
               </div>
       <!-- 广告位(240x70)开始 -->

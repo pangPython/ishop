@@ -5,32 +5,11 @@
 <meta name="verydows-baseurl" content="http://localhost">
 <meta name="keywords" content="用户登录">
 <meta name="description" content="用户登录">
-<title>用户登陆 - JUBAOPEN商城系统</title>
+<title>用户登录</title>
 <link rel="stylesheet" type="text/css" href="../images/general.css">
 <link rel="stylesheet" type="text/css" href="../images/login.css">
 <script type="text/javascript" src="../images/jquery.js"></script>
 <script type="text/javascript" src="../images/general.js"></script>
-<script type="text/javascript">
-function login(btn){
-  $('#username').vdsFieldChecker({rules:{required:[true, '请输入用户名']}, tipsPos:'abs'});
-  $('#password').vdsFieldChecker({rules:{required:[true, '请输入密码']}, tipsPos:'abs'});
-  if($('#captcha').size() > 0){
-    $('#captcha').vdsFieldChecker({rules: {required:[true, '请输入验证码']}, tipsPos:'abs'});
-  }
-  $('#login-form').vdsFormChecker({
-    beforeSubmit: function(){
-      vdsSetCipher('password', 'Verydows');
-      $(btn).addClass('disabled').text('正在登陆').prop('disabled', true);
-    }
-  });
-}
-
-function resetCaptcha(){
-  var src = "http://localhost/api/captcha/image?v=random";
-  $('#captcha-img').attr('src', src.replace('random', Math.random()));
-  $('#captcha').focus();
-}
-</script>
 </head>
 <body>
 <!-- 头部开始 -->
@@ -62,7 +41,7 @@ function resetCaptcha(){
           <div class="fr"></div>
         </div>
         <input class="form-submit aln-c radius4 mt20" type="submit" value="登录">
-        <div class="c999 mt20">您还没有账号？ 立即<a class="ml5" href="http://localhost/user/register.html">免费注册</a></div>
+        <div class="c999 mt20">您还没有账号？ 立即<a class="ml5" href="/user/regist.php">免费注册</a></div>
 
       </div>
     </form>
