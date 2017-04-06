@@ -86,7 +86,7 @@ include '../conn.php';
         </thead>
         <tbody>
       <?php
-      $sql = "SELECT * FROM goods";
+      $sql = "SELECT * FROM goods order by id desc";
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {

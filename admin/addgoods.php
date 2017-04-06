@@ -13,7 +13,7 @@ include '../conn.php';
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>商品管理</title>
+    <title>添加货物</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -77,7 +77,7 @@ include '../conn.php';
         </thead>
         <tbody>
 
-<form class="" action="index.html" method="post">
+<form class="" action="doaddgoods.php" method="post">
 
     <tr>
       <td>商品名称：</td>
@@ -101,7 +101,7 @@ include '../conn.php';
     </tr>
     <tr colspan="2">
       <td>
-        <input type="submit" class="btn btn-success" value="">
+        <input type="submit" class="btn btn-success" value="添加">
       </td>
     </tr>
   </form>

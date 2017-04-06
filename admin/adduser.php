@@ -13,7 +13,7 @@ include '../conn.php';
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>商品管理</title>
+    <title>添加用户</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -52,67 +52,80 @@ include '../conn.php';
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="/admin/main.php">首页</a></li>
-            <li class="active"><a href="/admin/goodslist.php">商品列表</a></li>
-            <li><a href="/admin/userlist.php">用户列表</a></li>
+            <li><a href="/admin/goodslist.php">商品列表</a></li>
+            <li class="active"><a href="/admin/userlist.php">用户列表</a></li>
             <li><a href="/admin/articlelist.php">文章列表</a></li>
+            <li><a href="/admin/advlist.php">广告列表</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/" >进入前台</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>商品管理</h1>
-        <p>这里是商品管理，你可以对商品进行增删改查的管理</p>
-        <p>精彩购物，尽在聚宝盆商城！</p>
-      </div>
-
-                <table class="table table-striped">
-
-        <a href="addgoods.php" class="btn btn-success">增加商品</a>
+                <table class="table">
         <thead>
           <tr>
-            <th>id</th>
-            <th>名称</th>
-            <th>价格</th>
-            <th>操作</th>
+            <th colspan="2">添加用户</th>
+
           </tr>
         </thead>
         <tbody>
-      <?php
-      $sql = "SELECT * FROM goods";
-      $result = $conn->query($sql);
-
-      if ($result->num_rows > 0) {
-        // 输出每行数据
-        while($row = $result->fetch_assoc()) {
-          ?>
-
+          <form class="" action="doadduser.php" method="post">
     <tr>
-      <td><?php echo $row["id"]; ?></td>
-      <td><?php echo $row["goods_name"]; ?></td>
-      <td><?php echo $row["price"]; ?></td>
+      <td>用户名：</td>
       <td>
-        <a href="#" class="btn btn-primary">编辑</a>
-        <a href="#" class="btn btn-danger">删除</a>
+        <input type="text" name="username" value="">
       </td>
     </tr>
 
-          <?php
+    <tr>
+      <td>密码：</td>
+      <td>
+        <input type="text" name="password" value="">
+      </td>
+    </tr>
 
-        }
-      } else {
-        echo "0 个结果";
-      }
-      $conn->close();
-      ?>
+    <tr>
+      <td>手机号：</td>
+      <td>
+        <input type="text" name="tel" value="">
+      </td>
+    </tr>
+
+    <tr>
+      <td>性别：</td>
+      <td>
+        <select class="select" name="sex">
+          <option value="1">男</option>
+          <option value="0">女</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>邮件：</td>
+      <td>
+        <input type="text" name="email" value="">
+      </td>
+    </tr>
+
+    <tr>
+      <td>地址：</td>
+      <td>
+        <input type="text" name="address" value="">
+      </td>
+    </tr>
+
+<tr>
+  <td colspan="2">
+    <input type="submit" class="btn btn-success" value="添加">
+  </td>
+</tr>
+
+</form>
     </tbody>
   </table>
     </div> <!-- /container -->
