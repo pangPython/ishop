@@ -55,6 +55,7 @@ include '../conn.php';
             <li><a href="/admin/goodslist.php">商品列表</a></li>
             <li class="active"><a href="/admin/userlist.php">用户列表</a></li>
             <li><a href="/admin/articlelist.php">文章列表</a></li>
+            <li><a href="/admin/advlist.php">广告列表</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="/index.php">进入前台 <span class="sr-only">(current)</span></a></li>

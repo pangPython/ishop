@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2017-04-04 18:37:13
+Date: 2017-04-06 11:41:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,6 +30,24 @@ CREATE TABLE `admin` (
 -- Records of admin
 -- ----------------------------
 INSERT INTO `admin` VALUES ('1', 'admin', 'admin');
+
+-- ----------------------------
+-- Table structure for `adv`
+-- ----------------------------
+DROP TABLE IF EXISTS `adv`;
+CREATE TABLE `adv` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `key` varchar(255) DEFAULT NULL,
+  `picture` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of adv
+-- ----------------------------
+INSERT INTO `adv` VALUES ('1', '广告1', '轮播', '12331', '123123213');
 
 -- ----------------------------
 -- Table structure for `cert`
@@ -57,20 +75,21 @@ CREATE TABLE `goods` (
   `goods_name` varchar(255) NOT NULL,
   `type` int(50) NOT NULL,
   `price` float NOT NULL,
-  `info` text,
+  `description` text,
+  `old_price` float(4,2) DEFAULT '0.00',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES ('1', '精品服装', '0', '288.11', null);
-INSERT INTO `goods` VALUES ('2', '辣条', '0', '2.5', null);
-INSERT INTO `goods` VALUES ('3', '汽车', '0', '888888', null);
-INSERT INTO `goods` VALUES ('4', '电视', '0', '2344', null);
-INSERT INTO `goods` VALUES ('5', '冰箱', '0', '2131', null);
-INSERT INTO `goods` VALUES ('6', '洗衣机', '0', '2588', null);
-INSERT INTO `goods` VALUES ('7', '空调', '0', '1234.88', null);
+INSERT INTO `goods` VALUES ('1', '精品服装', '0', '288.11', null, '0.00');
+INSERT INTO `goods` VALUES ('2', '辣条', '0', '2.5', null, '0.00');
+INSERT INTO `goods` VALUES ('3', '汽车', '0', '888888', null, '0.00');
+INSERT INTO `goods` VALUES ('4', '电视', '0', '2344', null, '0.00');
+INSERT INTO `goods` VALUES ('5', '冰箱', '0', '2131', null, '0.00');
+INSERT INTO `goods` VALUES ('6', '洗衣机', '0', '2588', null, '0.00');
+INSERT INTO `goods` VALUES ('7', '空调', '0', '1234.88', null, '0.00');
 
 -- ----------------------------
 -- Table structure for `goods_type`
@@ -106,17 +125,17 @@ INSERT INTO `orders` VALUES ('2', '1', '2', '4');
 INSERT INTO `orders` VALUES ('3', '1', '1', '222');
 
 -- ----------------------------
--- Table structure for `pay_method`
+-- Table structure for `pay`
 -- ----------------------------
-DROP TABLE IF EXISTS `pay_method`;
-CREATE TABLE `pay_method` (
+DROP TABLE IF EXISTS `pay`;
+CREATE TABLE `pay` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pay_method` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of pay_method
+-- Records of pay
 -- ----------------------------
 
 -- ----------------------------

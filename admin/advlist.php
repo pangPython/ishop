@@ -1,7 +1,7 @@
 <?php
 include '../conn.php';
 
-?>
+ ?>
 <!DOCTYPE html>
 <html lang="zh">
   <head>
@@ -13,7 +13,7 @@ include '../conn.php';
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>文章管理</title>
+    <title>后台管理</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -54,8 +54,8 @@ include '../conn.php';
             <li><a href="/admin/main.php">首页</a></li>
             <li><a href="/admin/goodslist.php">商品列表</a></li>
             <li><a href="/admin/userlist.php">用户列表</a></li>
-            <li class="active"><a href="/admin/articlelist.php">文章列表</a></li>
-            <li><a href="/admin/advlist.php">广告列表</a></li>
+            <li><a href="/admin/articlelist.php">文章列表</a></li>
+            <li class="active"><a href="/admin/advlist.php">广告列表</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="/index.php">进入前台 <span class="sr-only">(current)</span></a></li>
@@ -68,54 +68,50 @@ include '../conn.php';
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>文章管理</h1>
-        <p>这里是文章管理，你可以对文章进行增删改查的管理</p>
+        <h1>广告管理</h1>
+        <p>这里是广告管理，你可以对广告进行增删改查的管理</p>
         <p>精彩购物，尽在聚宝盆商城！</p>
       </div>
+<table class="table table-striped">
+              <a href="addadv.php" class="btn btn-success">增加广告</a>
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>名称</th>
+                  <th>关键词</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+            <?php
+            $sql = "SELECT * FROM adv";
+            $result = $conn->query($sql);
 
-                <table class="table table-striped">
+            if ($result->num_rows > 0) {
+              // 输出每行数据
+              while($row = $result->fetch_assoc()) {
+                ?>
 
-        <a href="adduser.php" class="btn btn-success">增加文章</a>
-        <thead>
           <tr>
-            <th>id</th>
-            <th>标题</th>
-            <th>作者</th>
-            <th>时间</th>
-            <th>操作</th>
+            <td><?php echo $row["id"]; ?></td>
+            <td><?php echo $row["name"]; ?></td>
+            <td><?php echo $row["key"]; ?></td>
+            <td>
+              <a href="#" class="btn btn-primary">编辑</a>
+              <a href="#" class="btn btn-danger">删除</a>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-      <?php
-      $sql = "SELECT * FROM wenzhang";
-      $result = $conn->query($sql);
 
-      if ($result->num_rows > 0) {
-        // 输出每行数据
-        while($row = $result->fetch_assoc()) {
-          ?>
+                <?php
 
-    <tr>
-      <td><?php echo $row["id"]; ?></td>
-      <td><?php echo $row["title"]; ?></td>
-      <td><?php echo $row["author"]; ?></td>
-      <td><?php echo $row["time"]; ?></td>
-      <td>
-        <a href="#" class="btn btn-primary">编辑</a>
-        <a href="#" class="btn btn-danger">删除</a>
-      </td>
-    </tr>
-
-          <?php
-
-        }
-      } else {
-        echo "0 个结果";
-      }
-      $conn->close();
-      ?>
-    </tbody>
-  </table>
+              }
+            } else {
+              echo "0 个结果";
+            }
+            $conn->close();
+            ?>
+          </tbody>
+        </table>
     </div> <!-- /container -->
 
 
