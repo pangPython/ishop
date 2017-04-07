@@ -1,15 +1,4 @@
-<?php
-include '../conn.php';
-//获取表单数据
-$adv_id =  $_REQUEST['advid'];
-$adv_name = $_REQUEST['name'];
-$key_word = $_REQUEST['key'];
-$pic = $_REQUEST['picture'];
-$link = $_REQUEST['link'];
 
-$sql = "update adv set name = '".$adv_name."',key='".$key_word."',picture='".$pic."',link='".$link."' where id = ".$adv_id;
-
-?>
 <!DOCTYPE html>
 <html lang="zh">
   <head>
@@ -21,7 +10,7 @@ $sql = "update adv set name = '".$adv_name."',key='".$key_word."',picture='".$pi
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>编辑成功</title>
+    <title>编辑</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +31,18 @@ $sql = "update adv set name = '".$adv_name."',key='".$key_word."',picture='".$pi
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  <?php
+  include '../conn.php';
+  //获取表单数据
+  $adv_id =  $_REQUEST['advid'];
+  $adv_name = $_REQUEST['advsname'];
+  $key_word = $_REQUEST['key'];
+  $pic = $_REQUEST['picture'];
+  $link = $_REQUEST['link'];
 
+  $sql = "update adv set name = '".$adv_name."',keywords='".$key_word."',picture='".$pic."',link='".$link."' where id = ".$adv_id;
+
+  ?>
   <body>
 
     <!-- Fixed navbar -->
@@ -62,8 +62,8 @@ $sql = "update adv set name = '".$adv_name."',key='".$key_word."',picture='".$pi
             <li><a href="/admin/main.php">首页</a></li>
             <li><a href="/admin/userlist.php">用户列表</a></li>
             <li><a href="/admin/articlelist.php">文章列表</a></li>
-            <li><a href="/admin/advlist.php">广告列表</a></li>
-            <li class="active"><a href="/admin/goodslist.php">商品列表</a></li>
+            <li><a href="/admin/goodslist.php">商品列表</a></li>
+            <li class="active"><a href="/admin/advlist.php">广告列表</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="/index.php">进入前台 <span class="sr-only">(current)</span></a></li>
@@ -89,8 +89,7 @@ $sql = "update adv set name = '".$adv_name."',key='".$key_word."',picture='".$pi
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+
     <script src="./js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

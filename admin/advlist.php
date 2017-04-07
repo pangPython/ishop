@@ -95,7 +95,7 @@ include '../conn.php';
           <tr>
             <td><?php echo $row["id"]; ?></td>
             <td><?php echo $row["name"]; ?></td>
-            <td><?php echo $row["key"]; ?></td>
+            <td><?php echo $row["keywords"]; ?></td>
             <td>
               <a href="editadv.php?advid=<?php echo $row['id'];?>" class="btn btn-primary">编辑</a>
               <a href="#" class="btn btn-danger">删除</a>
