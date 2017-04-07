@@ -1,7 +1,10 @@
 <?php
 include '../conn.php';
+//获取商品id
+$adv_id = $_REQUEST['advid'];
 
- ?>
+$sql = "select * from adv where id = ".$adv_id;
+?>
 <!DOCTYPE html>
 <html lang="zh">
   <head>
@@ -13,7 +16,7 @@ include '../conn.php';
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>广告管理</title>
+    <title>广告编辑</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -66,52 +69,64 @@ include '../conn.php';
 
     <div class="container">
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>广告管理</h1>
-        <p>这里是广告管理，你可以对广告进行增删改查的管理</p>
-        <p>精彩购物，尽在聚宝盆商城！</p>
-      </div>
-<table class="table table-striped">
-              <a href="addadv.php" class="btn btn-success">增加广告</a>
-              <thead>
-                <tr>
-                  <th>id</th>
-                  <th>名称</th>
-                  <th>关键词</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-            <?php
-            $sql = "SELECT * FROM adv";
-            $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-              // 输出每行数据
-              while($row = $result->fetch_assoc()) {
-                ?>
-
+<br><br><br><br>
+        <table class="table table-striped">
+        <thead>
           <tr>
-            <td><?php echo $row["id"]; ?></td>
-            <td><?php echo $row["name"]; ?></td>
-            <td><?php echo $row["key"]; ?></td>
-            <td>
-              <a href="editadv.php?advid=<?php echo $row['id'];?>" class="btn btn-primary">编辑</a>
-              <a href="#" class="btn btn-danger">删除</a>
-            </td>
+            <th colspan="2">广告编辑</th>
+
           </tr>
+        </thead>
+        <tbody>
+          <form class="" action="doeditadv.php?advid=<?php echo $adv_id?>" method="post">
+          <?php
 
-                <?php
 
-              }
-            } else {
-              echo "0 个结果";
-            }
-            $conn->close();
-            ?>
-          </tbody>
-        </table>
+          $result = $conn->query($sql);
+
+          if ($result->num_rows>0) {
+            //存在该商品
+            while ($row=$result->fetch_assoc()) {
+
+?>
+
+
+    <tr>
+      <td>广告名称</td>
+      <td><input type="text" name="advsname" value="<?php echo $row['name']?>"></td>
+    </tr>
+
+    <tr>
+      <td>关键词</td>
+      <td><input type="text" name="key" value="<?php echo $row['key']?>"></td>
+    </tr>
+
+    <tr>
+      <td>图片地址</td>
+      <td><input type="text" name="picture" value="<?php echo $row['picture']?>"></td>
+    </tr>
+
+    <tr>
+      <td>链接</td>
+      <td><input type="text" name="link" value="<?php echo $row['link']?>"></td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td><input type="submit" class="btn btn-info" name="" value="更新"></td>
+    </tr>
+    <?php
+
+
+  }
+  }else{
+  echo "不存在该广告！";
+  }
+     ?>
+  </form>
+    </tbody>
+  </table>
     </div> <!-- /container -->
 
 

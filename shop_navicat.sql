@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : .
-Source Server Version : 50547
+Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : shop
 
 Target Server Type    : MYSQL
-Target Server Version : 50547
+Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-06 11:41:51
+Date: 2017-04-07 20:07:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -78,18 +78,12 @@ CREATE TABLE `goods` (
   `description` text,
   `old_price` float(4,2) DEFAULT '0.00',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES ('1', '精品服装', '0', '288.11', null, '0.00');
-INSERT INTO `goods` VALUES ('2', '辣条', '0', '2.5', null, '0.00');
-INSERT INTO `goods` VALUES ('3', '汽车', '0', '888888', null, '0.00');
-INSERT INTO `goods` VALUES ('4', '电视', '0', '2344', null, '0.00');
-INSERT INTO `goods` VALUES ('5', '冰箱', '0', '2131', null, '0.00');
-INSERT INTO `goods` VALUES ('6', '洗衣机', '0', '2588', null, '0.00');
-INSERT INTO `goods` VALUES ('7', '空调', '0', '1234.88', null, '0.00');
+INSERT INTO `goods` VALUES ('10', '珍珠', '1', '11', '群殴无IE怄气无无无无', '12.00');
 
 -- ----------------------------
 -- Table structure for `goods_type`

@@ -33,6 +33,15 @@ include '../conn.php';
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="/images/jquery.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </head>
 
   <body>
@@ -99,13 +108,43 @@ include '../conn.php';
       <td><?php echo $row["goods_name"]; ?></td>
       <td><?php echo $row["price"]; ?></td>
       <td>
-        <a href="#" class="btn btn-primary">编辑</a>
-        <a href="#" class="btn btn-danger">删除</a>
+        <a href="editgoods.php?gid=<?php echo $row['id']?>" class="btn btn-primary">编辑</a>
+        <!-- 按钮触发模态框 -->
+        <button  class="btn btn-danger" data-toggle="modal" data-target="#myModal">删除</button>
+
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">提示</h4>
+                    </div>
+                    <div class="modal-body">确认是否要删除？</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" id="del" class="btn btn-danger" >删除</button>
+                        <script type="text/javascript">
+                          $(function() {
+                            $('#del').click(function() {
+                                $.post("/admin/delgoods.php",{
+                                  gid:<?php echo $row['id'] ?>,
+                                },function(data,status){
+                                  if (data==1) {
+                                    alert('删除成功！');
+                                  }
+                                });
+                            });
+                          });
+                        </script>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
       </td>
     </tr>
-
           <?php
-
         }
       } else {
         echo "0 个结果";
@@ -114,16 +153,13 @@ include '../conn.php';
       ?>
     </tbody>
   </table>
+
+
+
     </div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="./js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
   </body>
 </html>
