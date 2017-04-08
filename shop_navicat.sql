@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-08 16:58:27
+Date: 2017-04-08 18:11:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,7 +49,6 @@ CREATE TABLE `adv` (
 -- ----------------------------
 INSERT INTO `adv` VALUES ('1', '广告1', '轮播', '/images/56e6a9d26d76d3GZ7ISlt5y10455.jpg', '123123213');
 INSERT INTO `adv` VALUES ('2', '轮播2', '广告', '/images/56ebb54d3c934W0xGnTL6Pz42200.jpg', '#');
-INSERT INTO `adv` VALUES ('3', '', '', '', '');
 
 -- ----------------------------
 -- Table structure for `cart`
@@ -114,7 +113,7 @@ CREATE TABLE `orders` (
   `goods_id` int(11) NOT NULL,
   `count` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of orders
@@ -122,6 +121,8 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` VALUES ('1', '1', '1', '6');
 INSERT INTO `orders` VALUES ('2', '1', '2', '4');
 INSERT INTO `orders` VALUES ('3', '1', '1', '222');
+INSERT INTO `orders` VALUES ('4', '5', '10', '2');
+INSERT INTO `orders` VALUES ('5', '5', '10', '2');
 
 -- ----------------------------
 -- Table structure for `pay`
@@ -151,13 +152,14 @@ CREATE TABLE `user` (
   `address` varchar(255) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'test', '123456', '15766668888', '1', '124142@qq.com', '山东省', null);
 INSERT INTO `user` VALUES ('2', 'test1', '111111', '111111', '女', '123123@qq.com', '浙江省', null);
+INSERT INTO `user` VALUES ('5', 'jubaopen', '123456', '15766666666', '1', '123312@qq.com', '河北省雄县', null);
 INSERT INTO `user` VALUES ('4', 'u001', '123456', '13966889999', '1', '13966889999@139.com', '北京市亦庄', null);
 
 -- ----------------------------

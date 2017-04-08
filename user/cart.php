@@ -35,19 +35,21 @@ exit;
   <p style="font-size:30px">我的购物车</p>
       <br>  <br>  <br>  <br>
 <?php
-$sql = "SELECT * FROM cert where user_id = ".$uid;
+$sql = "SELECT * FROM cart where user_id = ".$uid;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) {
 
   echo "<p style='font-size:30px'>用户id：".$row['user_id']."<br>商品id:".$row['goods_id']."<br>数量:".$row['count']."</p>";
-
+ ?>
+ <p style='font-size:30px'><a href="/user/payall.php?uid=<?php echo $row['user_id']?>">全部付款</a></p>
+ <p style='font-size:30px'><a href="/user/cleancart.php?uid=<?php echo $row['user_id']?>">清空购物车</a></p>
+ <?php
 }
 }
  ?>
-<p style='font-size:30px'><a href="/user/upload.php">全部付款</a></p>
-<p style='font-size:30px'><a href="/user/order.php">清空购物车</a></p>
+
 </div>
 <!-- 页脚开始 -->
 <div class="footer mt20">

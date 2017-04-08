@@ -33,6 +33,12 @@ include '../conn.php';
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script src="/images/jquery.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
   </head>
 
   <body>
@@ -98,7 +104,8 @@ include '../conn.php';
             <td><?php echo $row["keywords"]; ?></td>
             <td>
               <a href="editadv.php?advid=<?php echo $row['id'];?>" class="btn btn-primary">编辑</a>
-              <a href="#" class="btn btn-danger">删除</a>
+              <!-- 按钮触发模态框 -->
+              <button  class="btn btn-danger" data-toggle="modal" onclick="deladv(<?php echo $row['id']?>)" data-target="#myModal">删除</button>
             </td>
           </tr>
 
@@ -112,16 +119,48 @@ include '../conn.php';
             ?>
           </tbody>
         </table>
+
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">提示</h4>
+                    </div>
+                    <div class="modal-body">确认是否要删除？</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" id="del" class="btn btn-danger" >删除</button>
+                        <script type="text/javascript">
+
+                            function deladv(advid) {
+                                $.post("/admin/deladv.php",{
+                                  adid:advid,
+                                },function(data,status){
+                                  sleep(300);
+                                  // if (data == 1) {
+                                    alert('删除成功！');
+                                  // }
+                                  //休眠3秒
+                                  sleep(300);
+                                  //跳转商品列表
+                                  location.href="/admin/advlist.php";
+
+                                });
+                            }
+                            function sleep(n) { //n表示的毫秒数
+                                   var start = new Date().getTime();
+                                   while (true) if (new Date().getTime() - start > n) break;
+                               }
+                        </script>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+
     </div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="./js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
   </body>
 </html>

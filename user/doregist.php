@@ -1,5 +1,30 @@
+<!DOCTYPE>
+<html >
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
 include '../conn.php';
+
+if (!isset($_REQUEST['username'])) {
+  echo "请填写用户名！";
+  exit;
+}
+if (!isset($_REQUEST['password'])) {
+  echo "请填写密码！";
+  exit;
+}
+if (!isset($_REQUEST['tel'])) {
+  echo "请填写电话！";
+  exit;
+}
+if (!isset($_REQUEST['email'])) {
+  echo "请填写email！";
+  exit;
+}
+if (!isset($_REQUEST['address'])) {
+  echo "请填写地址！";
+  exit;
+}
 //获取注册表单的数据
 $username = $_REQUEST['username'];
 $password = $_REQUEST['password'];
@@ -8,10 +33,6 @@ $sex = $_REQUEST['sex'];
 $email = $_REQUEST['email'];
 $address = $_REQUEST['address'];
 ?>
-<!DOCTYPE>
-<html >
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>用户注册</title>
 <link rel="stylesheet" type="text/css" href="../images/general.css">
@@ -24,7 +45,7 @@ $address = $_REQUEST['address'];
 <!-- 头部开始 -->
 <div class="header">
   <div class="w900 mt30 cut">
-    <div class="logo"><a href="http://localhost/index.php"><img src="../images/logo.gif"></a></div>
+    <div class="logo"><a href="#"><img src="../images/logo.gif"></a></div>
   </div>
 </div>
 <!-- 头部结束 -->
