@@ -35,7 +35,8 @@ $sql = "select * from goods where goods_name like '%".$keywords."%'";
 $result = $conn->query($sql);
 if($result->num_rows>0){
   while($row = $result->fetch_assoc()) {
-    echo "<li><a style = 'font-size:19px' href='/goods.php?id=".$row['id']."'><img alt='浅灰色T恤女士上衣' src='./images/9658d66b91d2f3e.jpg'>".$row['goods_name']."</a></li><br>";
+    echo "<li><a style = 'font-size:19px' href='/goods.php?id=".$row['id']."'><img  src='".$row['picture']."' width='200px'>".$row['goods_name']."</a></li><br>";
+    echo "<hr>";
   }
 }else{
   echo "没有搜索到关于：".$keywords;

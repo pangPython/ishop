@@ -71,7 +71,11 @@ $flag=0;
     <!-- 资讯开始 -->
     <div class="w240 fr cut">
       <div class="news mt10">
-        <h2><a href="/articles.php" class="fr">更多 <i>&gt;</i></a>最新资讯</h2>
+        <h2><a href="/articles.php<?php
+          if (isset($_REQUEST['uid'])) {
+            echo '?uid='.$_REQUEST['uid'];
+          }
+        ?>" class="fr">更多 <i>&gt;</i></a>最新资讯</h2>
                 <ul>
                   <?php
                   $sql = "SELECT * FROM wenzhang limit 3";
@@ -81,7 +85,11 @@ $flag=0;
                       // 输出每行数据
                       while($row = $result->fetch_assoc()) {
                    ?>
-                    <li><a  href="/article.php?wzid=<?php echo $row['id']?>"><?php echo $row['title'] ?></a></li>
+                    <li><a  href="/article.php?wzid=<?php echo $row['id'];
+                      if (isset($_REQUEST['uid'])) {
+                        echo '&uid='.$_REQUEST['uid'];
+                      }
+                    ?>"><?php echo $row['title'] ?></a></li>
                     <?php
                   }
                 }

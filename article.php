@@ -1,3 +1,7 @@
+<!DOCTYPE>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
 session_start();
 include 'conn.php';
@@ -6,14 +10,7 @@ if (isset($_REQUEST['wzid'])) {
 }else {
   echo "非法访问";
 }
-
-
-
 ?>
-<!DOCTYPE>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>文章</title>
 <link rel="stylesheet" type="text/css" href="../images/general.css">
 <link rel="stylesheet" type="text/css" href="../images/index.css">

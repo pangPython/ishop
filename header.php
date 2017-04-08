@@ -6,9 +6,16 @@
       <div class="logo fl"><a ><img alt="" src="/images/logo.gif" border="0"></a></div>
       <!-- 头部搜索开始 -->
       <div class="top-search fl">
-        <form method="get" action="/search.php">
+           <form method="get" action="/search.php">
+        <?php
+          if (isset($_REQUEST['uid'])) {
+          ?>
+          <input type="text"  style="display:none;" name="uid" value="<?php echo $_REQUEST['uid']?>">
+          <?php
+          }
+         ?>
                     <div class="sf cut">
-            <input class="fl" name="kw" type="text" value="" placeholder="双11提前购，畅想全年最低价">
+            <input class="fl" name="kw" type="text" value="" placeholder="搜索您想要的商品">
             <button class="fr" type="submit">搜 索</button>
           </div>
         </form>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-08 18:11:23
+Date: 2017-04-08 21:20:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,13 +42,14 @@ CREATE TABLE `adv` (
   `picture` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of adv
 -- ----------------------------
 INSERT INTO `adv` VALUES ('1', '广告1', '轮播', '/images/56e6a9d26d76d3GZ7ISlt5y10455.jpg', '123123213');
 INSERT INTO `adv` VALUES ('2', '轮播2', '广告', '/images/56ebb54d3c934W0xGnTL6Pz42200.jpg', '#');
+INSERT INTO `adv` VALUES ('4', '广告3', '轮播', '/images/56ebc00d857f6mPasxHIy0S76596.jpg', '#');
 
 -- ----------------------------
 -- Table structure for `cart`

@@ -30,8 +30,15 @@ $sql = "select * from wenzhang";
 $result = $conn->query($sql);
 if($result->num_rows>0){
   while($row = $result->fetch_assoc()) {
-      echo "<li><a style = 'font-size:19px' href='/article.php?wzid=".$row['id']."'>".$row['title']."  作者：".$row['author']." 时间:".$row['time']."</a></li><br>";
-
+    ?>
+    <li><a style = "font-size:19px" href='/article.php?wzid=<?php echo $row['id'];
+      if (isset($_REQUEST['uid'])) {
+        echo "&uid=".$_REQUEST['uid']."'>";
+      }
+      echo $row['title']."  作者：".$row['author']." 时间:".$row['time'];
+      ?>
+</a></li><br>
+<?php
   }
 }
 
