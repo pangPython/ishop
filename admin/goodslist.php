@@ -13,7 +13,7 @@ include '../conn.php';
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>商品管理</title>
+    <title>商品列表</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -110,36 +110,9 @@ include '../conn.php';
       <td>
         <a href="editgoods.php?gid=<?php echo $row['id']?>" class="btn btn-primary">编辑</a>
         <!-- 按钮触发模态框 -->
-        <button  class="btn btn-danger" data-toggle="modal" data-target="#myModal">删除</button>
+        <button  class="btn btn-danger" data-toggle="modal" onclick="delgoods(<?php echo $row['id']?>)" data-target="#myModal">删除</button>
 
-        <!-- 模态框（Modal） -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">提示</h4>
-                    </div>
-                    <div class="modal-body">确认是否要删除？</div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" id="del" class="btn btn-danger" >删除</button>
-                        <script type="text/javascript">
-                          $(function() {
-                            $('#del').click(function() {
-                                $.post("/admin/delgoods.php",{
-                                  gid:<?php echo $row['id'] ?>,
-                                },function(data,status){
-                                  if (data==1) {
-                                    alert('删除成功！');
-                                  }
-                                });
-                            });
-                          });
-                        </script>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal -->
+
         </div>
 
       </td>
@@ -153,7 +126,42 @@ include '../conn.php';
       ?>
     </tbody>
   </table>
+  <!-- 模态框（Modal） -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">提示</h4>
+              </div>
+              <div class="modal-body">确认是否要删除？</div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" id="del" class="btn btn-danger" >删除</button>
+                  <script type="text/javascript">
 
+                      function delgoods(goodsid) {
+                          $.post("/admin/delgoods.php",{
+                            gid:goodsid,
+                          },function(data,status){
+                            // if (data == 1) {
+                              alert('删除成功！');
+                            // }
+                            //休眠3秒
+                            sleep(300);
+                            //跳转商品列表
+                            location.href="/admin/goodslist.php";
+
+                          });
+                      }
+                      function sleep(n) { //n表示的毫秒数
+                             var start = new Date().getTime();
+                             while (true) if (new Date().getTime() - start > n) break;
+                         }
+                  </script>
+              </div>
+          </div><!-- /.modal-content -->
+      </div><!-- /.modal -->
 
 
     </div> <!-- /container -->

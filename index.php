@@ -34,21 +34,38 @@ $flag=0;
     <!-- 轮播图片广告开始 -->
     <div class="w640 fl cut"><div class="carousel cut">
   <div class="carousel-imgs cut">
-  <a href="" style="display: block;">
-    <img src="./images/56e6a9d26d76d3GZ7ISlt5y10455.jpg" width="630" height="240" alt="VIVO Xplay5 快无边界" border="0">
-  </a>
-  <a href="" style="display: none;">
-    <img src="./images/56ebb54d3c934W0xGnTL6Pz42200.jpg" width="630" height="240" alt="双11购物狂欢节来啦" border="0">
-  </a>
-  <a href="" style="display: none;">
-    <img src="./images/56ebc00d857f6mPasxHIy0S76596.jpg" width="630" height="240" alt="正式版发布啦!点击查看详情" border="0">
-  </a>
+    <?php
+      $sql = "select * from adv";
+
+      $result = $conn->query($sql);
+      if ($result->num_rows>0) {
+        $count = $result->num_rows;
+        while ($row=$result->fetch_assoc()) {
+?>
+          <a href="<?php echo $row['link']?>" style="display: block;">
+          <img src="<?php echo $row['picture']?>" width="630" height="240"  border="0">
+          </a>
+<?php
+        }
+        ?>
+
+        <ul class="carousel-tog">
+        <?php
+        while ($count>0) {
+          ?>
+          <li class="cur"><?php echo $count ?></li>
+          <?php
+          $count -= 1;
+        }
+ ?>
+
+ </ul>
+<?php
+      }
+     ?>
+
 </div>
-  <ul class="carousel-tog">
-    <li class="cur">0</li>
-    <li class="">1</li>
-    <li class="">2</li>
-  </ul>
+
 </div></div>
     <!-- 轮播图片广告结束 -->
     <!-- 资讯开始 -->
@@ -96,7 +113,7 @@ if ($result->num_rows > 0) {
           if($flag==1){
             echo '&uid='.$uid;
           }
-      ?>"><img alt="浅灰色T恤女士上衣" src="./images/9658d66b91d2f3e.jpg"></a></div>
+      ?>"><img  src="<?php echo $row['picture']?>"></a></div>
       <h3><a href="./goods.php?id=<?php echo $row["id"];
       if($flag==1){
         echo '&uid='.$uid;

@@ -1,10 +1,3 @@
-<?php
-include '../conn.php';
-//获取商品id
-$adv_id = $_REQUEST['advid'];
-
-$sql = "select * from adv where id = ".$adv_id;
-?>
 <!DOCTYPE html>
 <html lang="zh">
   <head>
@@ -16,7 +9,7 @@ $sql = "select * from adv where id = ".$adv_id;
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>广告编辑</title>
+    <title>添加广告</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -74,56 +67,39 @@ $sql = "select * from adv where id = ".$adv_id;
         <table class="table table-striped">
         <thead>
           <tr>
-            <th colspan="2">广告编辑</th>
+            <th colspan="2">广告添加</th>
 
           </tr>
         </thead>
         <tbody>
-          <form class="" action="doeditadv.php?advid=<?php echo $adv_id?>" method="post">
-          <?php
-
-
-          $result = $conn->query($sql);
-
-          if ($result->num_rows>0) {
-            //存在该商品
-            while ($row=$result->fetch_assoc()) {
-
-?>
+          <form class="" action="doaddadv.php" method="post">
 
 
     <tr>
       <td>广告名称</td>
-      <td><input type="text" name="advsname" value="<?php echo $row['name']?>"></td>
+      <td><input type="text" name="advsname" value=""></td>
     </tr>
 
     <tr>
       <td>关键词</td>
-      <td><input type="text" name="key" value="<?php echo $row['keywords']?>"></td>
+      <td><input type="text" name="keywords" value=""></td>
     </tr>
 
     <tr>
       <td>图片地址</td>
-      <td><input type="text" name="picture" value="<?php echo $row['picture']?>"></td>
+      <td><input type="text" name="picture" value=""></td>
     </tr>
 
     <tr>
       <td>链接</td>
-      <td><input type="text" name="link" value="<?php echo $row['link']?>"></td>
+      <td><input type="text" name="link" value=""></td>
     </tr>
 
     <tr>
       <td></td>
-      <td><input type="submit" class="btn btn-info" name="" value="更新"></td>
+      <td><input type="submit" class="btn btn-info" name="" value="添加"></td>
     </tr>
-    <?php
 
-
-  }
-  }else{
-  echo "不存在该广告！";
-  }
-     ?>
   </form>
     </tbody>
   </table>

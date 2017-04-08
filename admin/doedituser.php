@@ -11,6 +11,8 @@
 <?php
 include '../conn.php';
 //获取内容
+$uid = $_REQUEST['uid'];
+
 $username = $_REQUEST['username'];
 $password = $_REQUEST['password'];
 $tel      = $_REQUEST['tel'];
@@ -19,8 +21,9 @@ $email    = $_REQUEST['email'];
 $address  = $_REQUEST['address'];
 
 //写入数据库
-$sql = "insert into user(uname,pwd,tel,sex,email,address) values('".$username."','".$password."','".$tel."','".$sex."','".$email."','".$address."')";
-if ($conn->query($sql)==TRUE) {
+$sql = "update user set uname = '".$username."',pwd = '".$password."',tel = '".$tel."',sex = '".$sex."',email = '".$email."',address = '".$address."' where id = ".$uid;
+
+if ($conn->query($sql)) {
   echo "success！";
 }else {
   echo "failed！";

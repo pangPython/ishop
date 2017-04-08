@@ -22,7 +22,16 @@ $goods_id = $_REQUEST['id'];
    <!-- 头部开始 -->
 <?php include 'header.php'; ?>
    <!-- 头部结束 -->
+   <?php
+   $sql = "select * from goods where id = '".$goods_id."'";
 
+     $result = $conn->query($sql);
+
+     if ($result->num_rows > 0) {
+         // 输出每行数据
+         while($row = $result->fetch_assoc()) {
+
+             ?>
    <!-- 主体开始 -->
    <div class="container w1100 mt10">
      <div class="gtds cut">
@@ -31,7 +40,7 @@ $goods_id = $_REQUEST['id'];
          <div class="module">
            <div class="im cut">
              <div id="goods-imgarea" style="position: relative; overflow: hidden;">
-               <img src="./images/latiao.jpg" width="350px">
+               <img src="<?php echo $row['picture']?>" width="350px">
                </div>
 
              <i class="zoom icon"></i> </div>
@@ -47,16 +56,7 @@ $goods_id = $_REQUEST['id'];
 
        </div>
        <div class="gtbox cut">
-<?php
-$sql = "select * from goods where id = '".$goods_id."'";
 
-  $result = $conn->query($sql);
-
-  if ($result->num_rows > 0) {
-      // 输出每行数据
-      while($row = $result->fetch_assoc()) {
-
-          ?>
 
 
          <h1>

@@ -13,7 +13,7 @@
 <!-- 头部开始 -->
 <div class="header">
   <div class="w900 mt30 cut">
-    <div class="logo"><a href="http://localhost/index.php"><img src="../images/logo.gif"></a></div>
+    <div class="logo"><a href="/"><img src="../images/logo.gif"></a></div>
   </div>
 </div>
 <!-- 头部结束 -->

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-07 20:07:13
+Date: 2017-04-08 12:23:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -38,22 +38,23 @@ DROP TABLE IF EXISTS `adv`;
 CREATE TABLE `adv` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `key` varchar(255) DEFAULT NULL,
+  `keywords` varchar(255) DEFAULT NULL,
   `picture` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of adv
 -- ----------------------------
-INSERT INTO `adv` VALUES ('1', '广告1', '轮播', '12331', '123123213');
+INSERT INTO `adv` VALUES ('1', '广告1', '轮播', '/images/56e6a9d26d76d3GZ7ISlt5y10455.jpg', '123123213');
+INSERT INTO `adv` VALUES ('2', '轮播2', '广告', '/images/56ebb54d3c934W0xGnTL6Pz42200.jpg', '#');
 
 -- ----------------------------
--- Table structure for `cert`
+-- Table structure for `cart`
 -- ----------------------------
-DROP TABLE IF EXISTS `cert`;
-CREATE TABLE `cert` (
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE `cart` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `goods_id` int(11) NOT NULL,
@@ -62,9 +63,9 @@ CREATE TABLE `cert` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of cert
+-- Records of cart
 -- ----------------------------
-INSERT INTO `cert` VALUES ('1', '1', '1', '222');
+INSERT INTO `cart` VALUES ('1', '1', '1', '222');
 
 -- ----------------------------
 -- Table structure for `goods`
@@ -77,13 +78,16 @@ CREATE TABLE `goods` (
   `price` float NOT NULL,
   `description` text,
   `old_price` float(4,2) DEFAULT '0.00',
+  `picture` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES ('10', '珍珠', '1', '11', '群殴无IE怄气无无无无', '12.00');
+INSERT INTO `goods` VALUES ('10', '珍珠', '1', '11', '群殴无IE怄气无无无无', '12.00', '/images/5781648_100156002928_2.jpg');
+INSERT INTO `goods` VALUES ('11', '汽车', '2', '6666.66', '兰博基尼', '99.99', '/images/1302585745207rcr9vdm2la_medium.jpg');
+INSERT INTO `goods` VALUES ('12', '手机', '4', '699', '华为MATE9pro', '99.99', '/images/11103HT3-8.jpg');
 
 -- ----------------------------
 -- Table structure for `goods_type`
@@ -146,13 +150,14 @@ CREATE TABLE `user` (
   `address` varchar(255) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'test', '1234', '15766668888', '男', '124142@qq.com', '山东省', null);
+INSERT INTO `user` VALUES ('1', 'test', '123456', '15766668888', '1', '124142@qq.com', '山东省', null);
 INSERT INTO `user` VALUES ('2', 'test1', '111111', '111111', '女', '123123@qq.com', '浙江省', null);
+INSERT INTO `user` VALUES ('4', 'u001', '123456', '13966889999', '1', '13966889999@139.com', '北京市亦庄', null);
 
 -- ----------------------------
 -- Table structure for `wenzhang`
