@@ -20,18 +20,22 @@ if (!isset($_REQUEST['desc'])) {
   echo "请输入商品描述!";
   exit;
 }
+if (!isset($_REQUEST['picture'])) {
+  echo "请输入商品图片地址！";
+  exit;
+}
 
 $goods_name = $_REQUEST['goodsname'];
 $type = $_REQUEST['type'];
 $old_price = $_REQUEST['oldprice'];
 $description = $_REQUEST['desc'];
 $price = $_REQUEST['price'];
-
+$_picture = $_REQUEST['picture'];
 
 include '../conn.php';
-$sql = "insert into goods(goods_name,type,price,description,old_price)"
+$sql = "insert into goods(goods_name,type,price,description,old_price,picture)"
       ." values('".$goods_name."',".$type.",".$price.",'".$description."',"
-      .$old_price.")";
+      .$old_price.",'".$picture."')";
 
 if($conn->query($sql)=== TRUE){
 

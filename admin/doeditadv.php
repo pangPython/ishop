@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>编辑</title>
+    <title>更新</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -30,6 +30,11 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script src="./js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../images/jquery.js"></script>
+
   </head>
   <?php
   include '../conn.php';
@@ -78,21 +83,30 @@
 <br><br><br><br>
         <?php
         if ($conn->query($sql)) {
-          echo "更新成功！";
+          echo "更新成功！正在跳转...";
+          ?>
+<script type="text/javascript">
+  //休眠5秒，跳转广告列表
+  $(function() {
+    sleep(500);
+    location.href="/admin/advlist.php";
+  });
+
+  function sleep(n) { //n表示的毫秒数
+         var start = new Date().getTime();
+         while (true) if (new Date().getTime() - start > n) break;
+     }
+</script>
+          <?php
         }else {
-          echo "更新失败，请重试！";
+          echo "更新失败，请返回重试！";
         }
          ?>
     </div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
 
-    <script src="./js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
   </body>
 </html>
 <?php include '../db_close.php'; ?>

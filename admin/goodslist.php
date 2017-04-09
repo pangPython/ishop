@@ -89,7 +89,10 @@ include '../conn.php';
           <tr>
             <th>id</th>
             <th>名称</th>
+            <th>类型</th>
+            <th>原价</th>
             <th>价格</th>
+            <th>描述</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -106,7 +109,10 @@ include '../conn.php';
     <tr>
       <td><?php echo $row["id"]; ?></td>
       <td><?php echo $row["goods_name"]; ?></td>
+      <td><?php echo $row['type'] ?></td>
+      <td><?php echo $row['old_price'] ?></td>
       <td><?php echo $row["price"]; ?></td>
+      <td><?php echo $row['description'] ?></td>
       <td>
         <a href="editgoods.php?gid=<?php echo $row['id']?>" class="btn btn-primary">编辑</a>
         <!-- 按钮触发模态框 -->

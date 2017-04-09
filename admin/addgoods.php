@@ -99,6 +99,10 @@ include '../conn.php';
       <td>商品描述：</td>
       <td><input type="text" name="desc" value=""></td>
     </tr>
+    <tr>
+      <td>图片地址：</td>
+      <td><input type="text" name="picture" value=""></td>
+    </tr>
     <tr colspan="2">
       <td>
         <input type="submit" class="btn btn-success" value="添加">
