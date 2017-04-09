@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-09 17:39:21
+Date: 2017-04-09 19:54:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -86,7 +86,7 @@ CREATE TABLE `goods` (
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES ('10', '珍珠', '1', '11', '群殴无IE怄气无无无无', '12.00', '/images/5781648_100156002928_2.jpg');
+INSERT INTO `goods` VALUES ('1', '珍珠', '1', '11', '群殴无IE怄气无无无无', '12.00', '/images/5781648_100156002928_2.jpg');
 INSERT INTO `goods` VALUES ('11', '汽车', '2', '6666.66', '兰博基尼', '99.99', '/images/1302585745207rcr9vdm2la_medium.jpg');
 INSERT INTO `goods` VALUES ('12', '手机', '4', '699', '华为MATE9pro', '99.99', '/images/11103HT3-8.jpg');
 
@@ -158,7 +158,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'test', '123456', '15766668888', '1', '124142@qq.com', '山东省', null);
+INSERT INTO `user` VALUES ('1', 'test', '123456', '15766668888', '1', '124142@qq.com', '山东省', '/user/touxiang/1.jpg');
 INSERT INTO `user` VALUES ('2', 'test1', '111111', '111111', '女', '123123@qq.com', '浙江省', null);
 INSERT INTO `user` VALUES ('5', 'jubaopen', '123456', '15766666666', '1', '123312@qq.com', '河北省雄县', null);
 INSERT INTO `user` VALUES ('4', 'u001', '123456', '13966889999', '1', '13966889999@139.com', '北京市亦庄', null);

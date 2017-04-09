@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../conn.php';
+include 'function.php';
 if (!isset($_REQUEST['uid'])) {
   echo "非法访问！";
   exit;
@@ -50,7 +51,7 @@ if (isset($result->num_rows) && ($result->num_rows > 0)) {
 while($row = $result->fetch_assoc()) {
 
 ?>
-<li><a href="#" style="font-size:23px">订单id:<?php echo $row['id'].'  '; ?>货物id:<?php echo $row['goods_id'].'  ' ?>用户id:<?php echo $row['user_id']; ?></a></li>
+<li><a href="#" style="font-size:23px">订单id:<?php echo $row['id'].'  '; ?>商品名:<?php echo getGoodsNameById($conn,$row['goods_id']).'  ' ?>用户名:<?php echo getUserNameById($conn,$row['user_id']); ?></a></li>
 <?php
 
 }

@@ -32,19 +32,24 @@ exit;
 <!-- 头部结束 -->
 <!-- 主体开始 -->
 <div class="container w1100">
-
       <br>  <br>  <br>  <br>
+      <p style="font-size:30px">
 <?php
 
 while($row = $result->fetch_assoc()) {
 
-  echo "<p style='font-size:30px'>用户名：".$row['uname']."<br>密码:".$row['pwd']."<br>手机号:".$row['tel']
-  ."<br>性别:".$row['sex']."<br>邮箱:".$row['email']
-  ."<br>密码:".$row['pwd'].'</p>';
+  echo "用户名：".$row['uname']
+        ."<br>头像:<image src='".$row['avatar']."' width='80px'>"
+      ."<br>密码:".$row['pwd']
+      ."<br>手机号:".$row['tel']
+      ."<br>性别:".$row['sex']
+      ."<br>邮箱:".$row['email']
+      ."<br>密码:".$row['pwd'];
 
 }
 
  ?>
+ </p>
 <p style='font-size:30px'><a href="/user/upload.php?uid=<?php echo $uid?>">上传头像</a></p>
 <p style='font-size:30px'><a href="/user/order.php?uid=<?php echo $uid?>">我的订单</a></p>
 </div>

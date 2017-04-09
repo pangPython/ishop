@@ -1,6 +1,8 @@
 <?php
 session_start();
 include '../conn.php';
+include 'function.php';
+
 $uid=$_REQUEST['uid'];
 
 $sql = "SELECT * FROM user where id = '".$uid."'";
@@ -34,6 +36,7 @@ exit;
 <div class="container w1100">
   <p style="font-size:30px">我的购物车</p>
       <br>  <br>  <br>  <br>
+      <p style='font-size:30px'>
 <?php
 $sql = "SELECT * FROM cart where user_id = ".$uid;
 $result = $conn->query($sql);
@@ -41,8 +44,9 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) {
 
-  echo "<p style='font-size:30px'>用户id：".$row['user_id']."<br>商品id:".$row['goods_id']."<br>数量:".$row['count']."</p>";
+  echo "用户名：".getUserNameById($conn,$row['id'])."<br>商品名称:".getGoodsNameById($conn,$row['goods_id'])."<br>数量:".$row['count'];
  ?>
+ </p>
  <p style='font-size:30px'><a href="/user/payall.php?uid=<?php echo $row['user_id']?>">全部付款</a></p>
  <p style='font-size:30px'><a href="/user/cleancart.php?uid=<?php echo $row['user_id']?>">清空购物车</a></p>
  <?php
