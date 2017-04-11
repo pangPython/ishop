@@ -23,11 +23,11 @@ exit;
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>我的订单</title>
-  <link rel="stylesheet" type="text/css" href="../images/general.css">
-  <link rel="stylesheet" type="text/css" href="../images/index.css">
-  <script type="text/javascript" src="../images/jquery.js"></script>
-  <script type="text/javascript" src="../images/general.js"></script>
-  <script type="text/javascript" src="../images/carousel.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/general.css">
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script type="text/javascript" src="../js/general.js"></script>
+  <script type="text/javascript" src="../js/carousel.js"></script>
 </head>
 <body>
 <!-- 顶部开始 -->
@@ -39,8 +39,7 @@ exit;
 <div class="container w1100">
 
       <br>  <br>  <br>  <br>
-      <ul>
-
+<table border="1">
 
 <?php
 $sql = "SELECT * FROM orders where user_id = ".$uid;
@@ -51,7 +50,20 @@ if (isset($result->num_rows) && ($result->num_rows > 0)) {
 while($row = $result->fetch_assoc()) {
 
 ?>
-<li><a href="#" style="font-size:23px">订单id:<?php echo $row['id'].'  '; ?>商品名:<?php echo getGoodsNameById($conn,$row['goods_id']).'  ' ?>用户名:<?php echo getUserNameById($conn,$row['user_id']); ?></a></li>
+<tr>
+  <td>订单id</td>
+  <td><?php echo $row['id']; ?></td>
+  <td>商品名</td>
+  <td><?php echo getGoodsNameById($conn,$row['goods_id'])?></td>
+  <td>数量</td>
+  <td><?php echo $row['count']?></td>
+  <td>单价</td>
+  <td><?php echo getGoodsPriceById($conn,$row['goods_id']); ?></td>
+  <td>总价</td>
+  <td><?php echo  $row['count']*getGoodsPriceById($conn,$row['goods_id'])?></td>
+
+</tr>
+
 <?php
 
 }
@@ -59,7 +71,8 @@ while($row = $result->fetch_assoc()) {
   echo "没有订单";
 }
  ?>
- </ul>
+</table>
+
 </div>
 <!-- 页脚开始 -->
 <?php include '../footer.php'; ?>

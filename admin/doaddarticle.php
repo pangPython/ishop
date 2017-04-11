@@ -17,11 +17,11 @@ if (!isset($_REQUEST['content'])) {
 $title = $_REQUEST['title'];
 $author = $_REQUEST['author'];
 $content = $_REQUEST['content'];
-
+$time = date('y-m-d h:i:s',time());
 
 include '../conn.php';
-$sql = "insert into wenzhang(title,content,author)"
-      ." values('".$title."','".$content."','".$author."')";
+$sql = "insert into wenzhang(title,content,author,time)"
+      ." values('".$title."','".$content."','".$author."','".$time."')";
 
 if($conn->query($sql)=== TRUE){
 

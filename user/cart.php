@@ -20,11 +20,11 @@ exit;
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>聚宝盆商城</title>
-  <link rel="stylesheet" type="text/css" href="../images/general.css">
-  <link rel="stylesheet" type="text/css" href="../images/index.css">
-  <script type="text/javascript" src="../images/jquery.js"></script>
-  <script type="text/javascript" src="../images/general.js"></script>
-  <script type="text/javascript" src="../images/carousel.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/general.css">
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script type="text/javascript" src="../js/general.js"></script>
+  <script type="text/javascript" src="../js/carousel.js"></script>
 </head>
 <body>
 <!-- 顶部开始 -->
@@ -36,8 +36,8 @@ exit;
 <div class="container w1100">
   <p style="font-size:30px">我的购物车</p>
       <br>  <br>  <br>  <br>
-      <p style='font-size:30px'>
-<?php
+      <p >
+        <?php
 $sql = "SELECT * FROM cart where user_id = ".$uid;
 $result = $conn->query($sql);
 
@@ -46,16 +46,16 @@ while($row = $result->fetch_assoc()) {
 
   echo "用户名：".getUserNameById($conn,$row['id'])."<br>商品名称:".getGoodsNameById($conn,$row['goods_id'])."<br>数量:".$row['count'];
  ?>
- </p>
- <p style='font-size:30px'><a href="/user/payall.php?uid=<?php echo $row['user_id']?>">全部付款</a></p>
- <p style='font-size:30px'><a href="/user/cleancart.php?uid=<?php echo $row['user_id']?>">清空购物车</a></p>
+<hr>
  <?php
 }
 }
- ?>
+ ?> </p>
+ <p style='font-size:30px'><a href="/user/payall.php?uid=<?php echo $uid?>">全部付款</a></p>
+ <p style='font-size:30px'><a href="/user/cleancart.php?uid=<?php echo $uid?>">清空购物车</a></p>
 
 </div>
 <!-- 页脚开始 -->
 <div class="footer mt20">
-<script type="text/javascript" src="../images/juicer.js"></script>
+<script type="text/javascript" src="../js/juicer.js"></script>
 </body></html>

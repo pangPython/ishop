@@ -3,10 +3,10 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>用户登录</title>
-  <link rel="stylesheet" type="text/css" href="../images/general.css">
-  <link rel="stylesheet" type="text/css" href="../images/login.css">
-  <script type="text/javascript" src="../images/jquery.js"></script>
-  <script type="text/javascript" src="../images/general.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/general.css">
+  <link rel="stylesheet" type="text/css" href="../css/login.css">
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script type="text/javascript" src="../js/general.js"></script>
 </head>
 <body>
 <!-- 头部开始 -->
@@ -37,7 +37,7 @@
           <div class="fl"></div>
           <div class="fr"></div>
         </div>
-        <input class="form-submit aln-c radius4 mt20" type="submit" value="登录">
+        <input class="form-submit aln-c radius4 mt20" type="submit" value="登&nbsp;录">
         <div class="c999 mt20">您还没有账号？ 立即<a class="ml5" href="/user/regist.php">免费注册</a></div>
 
       </div>
@@ -53,7 +53,7 @@
       </div>
 
 </div><!-- 页脚结束 -->
-<script type="text/javascript" src="../images/md5.js"></script>
+
 
 
 </body></html>

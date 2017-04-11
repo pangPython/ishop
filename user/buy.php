@@ -26,11 +26,11 @@ exit;
 <meta name="keywords" content="">
 <meta name="description" content="">
 <title>聚宝盆商城</title>
-<link rel="stylesheet" type="text/css" href="../images/general.css">
-<link rel="stylesheet" type="text/css" href="../images/index.css">
-<script type="text/javascript" src="../images/jquery.js"></script>
-<script type="text/javascript" src="../images/general.js"></script>
-<script type="text/javascript" src="../images/carousel.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/general.css">
+<link rel="stylesheet" type="text/css" href="../css/index.css">
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/general.js"></script>
+<script type="text/javascript" src="../js/carousel.js"></script>
 </head>
 <body>
 <!-- 顶部开始 -->
@@ -56,10 +56,11 @@ while ($row = $result->fetch_assoc()) {
   echo "货物:".$row['goods_name'];
   echo "<br>价格:".$row['price'].'元';
   echo "<br>数量:".$count;
+  echo "<br><h3 style='font-size:25px;color:red'>总价:￥".$count*$row['price'];
 }
 
 }
- ?>
+ ?>/元</h3>
  </p>
 <p style='font-size:30px'>
   <a href="/user/pay.php?uid=<?php echo $uid?>&gid=<?php echo $goods_id?>&count=<?php echo $count?>">
@@ -68,5 +69,5 @@ while ($row = $result->fetch_assoc()) {
 </div>
 <!-- 页脚开始 -->
 <div class="footer mt20">
-<script type="text/javascript" src="../images/juicer.js"></script>
+<script type="text/javascript" src="../js/juicer.js"></script>
 </body></html>

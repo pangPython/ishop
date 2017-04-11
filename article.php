@@ -12,11 +12,11 @@ if (isset($_REQUEST['wzid'])) {
 }
 ?>
 <title>文章</title>
-<link rel="stylesheet" type="text/css" href="../images/general.css">
-<link rel="stylesheet" type="text/css" href="../images/index.css">
-<script type="text/javascript" src="../images/jquery.js"></script>
-<script type="text/javascript" src="../images/general.js"></script>
-<script type="text/javascript" src="../images/carousel.js"></script>
+<link rel="stylesheet" type="text/css" href="css/general.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/general.js"></script>
+<script type="text/javascript" src="js/carousel.js"></script>
 </head>
 <body>
 <!-- 顶部开始 -->

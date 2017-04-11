@@ -1,6 +1,8 @@
 <?php
 session_start();
 include '../conn.php';
+include 'function.php';
+
 if (!isset($_REQUEST['uid'])) {
   echo "非法访问！";
   exit;
@@ -22,11 +24,11 @@ exit;
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>我的订单</title>
-  <link rel="stylesheet" type="text/css" href="../images/general.css">
-  <link rel="stylesheet" type="text/css" href="../images/index.css">
-  <script type="text/javascript" src="../images/jquery.js"></script>
-  <script type="text/javascript" src="../images/general.js"></script>
-  <script type="text/javascript" src="../images/carousel.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/general.css">
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script type="text/javascript" src="../js/general.js"></script>
+  <script type="text/javascript" src="../js/carousel.js"></script>
 </head>
 <body>
 <!-- 顶部开始 -->
@@ -58,7 +60,12 @@ exit;
       $upload_path = "./touxiang/"; //上传文件的存放路径
       //开始移动文件到相应的文件夹
       if(move_uploaded_file($file['tmp_name'],$upload_path.$file['name'])){
-        echo "头像上传成功!";
+        if (updateAvatar($conn,$uid,$name)) {
+            echo "头像上传成功!";
+            exit;
+        }
+        echo "头像上传失败!";
+        exit;
       }else{
         echo "头像上传失败!";
       }

@@ -9,11 +9,12 @@ $flag=0;
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="./images/general.css">
-<link rel="stylesheet" type="text/css" href="./images/index.css">
-<script type="text/javascript" src="./images/jquery.js"></script>
-<script type="text/javascript" src="./images/general.js"></script>
-<script type="text/javascript" src="./images/carousel.js"></script>
+<!-- <link rel="icon" href="./images/icon.ico"> -->
+<link rel="stylesheet" type="text/css" href="./css/general.css">
+<link rel="stylesheet" type="text/css" href="./css/index.css">
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/general.js"></script>
+<script type="text/javascript" src="./js/carousel.js"></script>
 <title>聚宝盆商城</title>
 </head>
 <body>
@@ -70,7 +71,7 @@ $flag=0;
     <!-- 轮播图片广告结束 -->
     <!-- 资讯开始 -->
     <div class="w240 fr cut">
-      <div class="news mt10">
+      <div class="news mt10" style="height: 240px">
         <h2><a href="/articles.php<?php
           if (isset($_REQUEST['uid'])) {
             echo '?uid='.$_REQUEST['uid'];
@@ -78,7 +79,7 @@ $flag=0;
         ?>" class="fr">更多 <i>&gt;</i></a>最新资讯</h2>
                 <ul>
                   <?php
-                  $sql = "SELECT * FROM wenzhang limit 3";
+                  $sql = "SELECT * FROM wenzhang limit 5";
                   $result = $conn->query($sql);
 
                   if ($result->num_rows > 0) {
@@ -97,7 +98,7 @@ $flag=0;
                   </ul>
               </div>
       <!-- 广告位(240x70)开始 -->
-      <div class="module mt10"></div>
+      <!-- <div class="module mt10"></div> -->
       <!-- 广告位(240x70)结束 -->
     </div>
     <!-- 资讯结束 -->
@@ -131,7 +132,12 @@ if ($result->num_rows > 0) {
 echo $row["goods_name"];
  ?>
       </a></h3>
-      <p class="price"><i>¥</i>
+      <del> <p class="price"><i>原价¥</i>
+<?php
+echo $row["old_price"]
+ ?>
+      </p></del>
+      <p class="price"><i>现价t¥</i>
 <?php
 echo $row["price"]
  ?>

@@ -5,23 +5,23 @@
 <?php
 include '../conn.php';
 
-if (!isset($_REQUEST['username'])) {
+if (!isset($_POST['username'])) {
   echo "请填写用户名！";
   exit;
 }
-if (!isset($_REQUEST['password'])) {
+if (!isset($_POST['password'])) {
   echo "请填写密码！";
   exit;
 }
-if (!isset($_REQUEST['tel'])) {
+if (!isset($_POST['tel'])) {
   echo "请填写电话！";
   exit;
 }
-if (!isset($_REQUEST['email'])) {
+if (!isset($_POST['email'])) {
   echo "请填写email！";
   exit;
 }
-if (!isset($_REQUEST['address'])) {
+if (!isset($_POST['address'])) {
   echo "请填写地址！";
   exit;
 }
@@ -35,10 +35,10 @@ $address = $_REQUEST['address'];
 ?>
 
 <title>用户注册</title>
-<link rel="stylesheet" type="text/css" href="../images/general.css">
-<link rel="stylesheet" type="text/css" href="../images/login.css">
-<script type="text/javascript" src="../images/jquery.js"></script>
-<script type="text/javascript" src="../images/general.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/general.css">
+<link rel="stylesheet" type="text/css" href="../css/login.css">
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/general.js"></script>
 
 </head>
 <body>
@@ -84,7 +84,7 @@ $conn->close();
       </div>
 
 </div><!-- 页脚结束 -->
-<script type="text/javascript" src="../images/md5.js"></script>
+<script type="text/javascript" src="../js/md5.js"></script>
 
 
 </body></html>

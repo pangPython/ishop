@@ -34,7 +34,7 @@ $_picture = $_REQUEST['picture'];
 
 include '../conn.php';
 $sql = "insert into goods(goods_name,type,price,description,old_price,picture)"
-      ." values('".$goods_name."',".$type.",".$price.",'".$description."',"
+      ." values('".$goods_name."','".$type."',".$price.",'".$description."',"
       .$old_price.",'".$picture."')";
 
 if($conn->query($sql)=== TRUE){

@@ -28,8 +28,8 @@
         <!-- 头部购物车开始 -->
         <div class="top-cart fr">
           <div class="radius4 mt10">
-            <i class="icon"></i>
-            <a href="/user/cart.php?uid=<?php echo $_REQUEST['uid']?>"><font>我的购物车</font>(<b>0</b>)</a></div>
+            <i class=""><img src="/images/cart.gif" style="width: 20px"> </i>
+            <a href="/user/cart.php?uid=<?php echo $_REQUEST['uid']?>"><font>我的购物车</font></a></div>
         </div>
         <!-- 头部购物车结束 -->
         <?php

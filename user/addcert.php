@@ -23,11 +23,11 @@ exit;
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>我的订单</title>
-  <link rel="stylesheet" type="text/css" href="../images/general.css">
-  <link rel="stylesheet" type="text/css" href="../images/index.css">
-  <script type="text/javascript" src="../images/jquery.js"></script>
-  <script type="text/javascript" src="../images/general.js"></script>
-  <script type="text/javascript" src="../images/carousel.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/general.css">
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script type="text/javascript" src="../js/general.js"></script>
+  <script type="text/javascript" src="../js/carousel.js"></script>
 </head>
 <body>
 <!-- 顶部开始 -->
@@ -43,12 +43,12 @@ exit;
       <?php
       //添加成功
       //添加失败
-      $sql = "INSERT INTO cert(user_id,goods_id,count) VALUES(".$uid.",".$gid.",".$count.")";
+      $sql = "INSERT INTO cart(user_id,goods_id,count) VALUES(".$uid.",".$gid.",".$count.")";
 
       if ($conn->query($sql) === TRUE) {
           echo "添加购物车成功！";
       }else {
-        echo "添加购物车失败！";
+        echo "添加购物车失败！请检查是否填写商品数量！";
       }
 ?>
 </div>

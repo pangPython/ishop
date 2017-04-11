@@ -7,11 +7,11 @@ include 'conn.php';
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>搜索</title>
-<link rel="stylesheet" type="text/css" href="../images/general.css">
-<link rel="stylesheet" type="text/css" href="../images/index.css">
-<script type="text/javascript" src="../images/jquery.js"></script>
-<script type="text/javascript" src="../images/general.js"></script>
-<script type="text/javascript" src="../images/carousel.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/general.css">
+<link rel="stylesheet" type="text/css" href="./css/index.css">
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/general.js"></script>
+<script type="text/javascript" src="./js/carousel.js"></script>
 </head>
 <body>
 <!-- 顶部开始 -->
@@ -35,8 +35,13 @@ $sql = "select * from goods where goods_name like '%".$keywords."%'";
 $result = $conn->query($sql);
 if($result->num_rows>0){
   while($row = $result->fetch_assoc()) {
-    echo "<li><a style = 'font-size:19px' href='/goods.php?id=".$row['id']."'><img  src='".$row['picture']."' width='200px'>".$row['goods_name']."</a></li><br>";
-    echo "<hr>";
+    //echo "<li class='search'><a style = 'font-size:19px' href='/goods.php?id=".$row['id']."'><div class='searchd'><img  src='".$row['picture']."' width='200px'></div>".$row['goods_name'].'<br>'.$row['price']."</a></li>";
+    if (isset($_REQUEST['uid'])) {
+        echo "<li class='search'><a style = 'font-size:19px' href='/goods.php?id=".$row['id']."&uid=".$_REQUEST['uid']."'><div class='searchd'><img  src='".$row['picture']."' width='200px'></div>".$row['goods_name'].'<br>'.$row['price']."</a></li>";
+    }else {
+      echo "<li class='search'><a style = 'font-size:19px' href='/goods.php?id=".$row['id']."'><div class='searchd'><img  src='".$row['picture']."' width='200px'></div>".$row['goods_name'].'<br>'.$row['price']."</a></li>";
+    }
+    // echo "<hr>";
   }
 }else{
   echo "没有搜索到关于：".$keywords;

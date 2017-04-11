@@ -2,12 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>更新结果</title>
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <link href="./css/navbar-fixed-top.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/jquery.js">
+
+    </script>
   </head>
   <body>
 
-  </body>
-</html>
 <?php
 include '../conn.php';
 //获取内容
@@ -24,7 +33,24 @@ $address  = $_REQUEST['address'];
 $sql = "update user set uname = '".$username."',pwd = '".$password."',tel = '".$tel."',sex = '".$sex."',email = '".$email."',address = '".$address."' where id = ".$uid;
 
 if ($conn->query($sql)) {
-  echo "success！";
+  echo "更新用户信息成功！正在跳转...";
+  ?>
+  <script type="text/javascript">
+    //休眠5秒，跳转用户列表
+    $(function() {
+      sleep(500);
+      location.href="/admin/userlist.php";
+    });
+
+    function sleep(n) { //n表示的毫秒数
+           var start = new Date().getTime();
+           while (true) if (new Date().getTime() - start > n) break;
+       }
+  </script>
+  <?php
 }else {
-  echo "failed！";
-}
+ echo "更新用户信息失败请重试！error:update goods_info error!";
+}?>
+
+  </body>
+</html>

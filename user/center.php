@@ -18,11 +18,11 @@ exit;
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>聚宝盆商城</title>
-  <link rel="stylesheet" type="text/css" href="../images/general.css">
-  <link rel="stylesheet" type="text/css" href="../images/index.css">
-  <script type="text/javascript" src="../images/jquery.js"></script>
-  <script type="text/javascript" src="../images/general.js"></script>
-  <script type="text/javascript" src="../images/carousel.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/general.css">
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script type="text/javascript" src="../js/general.js"></script>
+  <script type="text/javascript" src="../js/carousel.js"></script>
 </head>
 <body>
 <!-- 顶部开始 -->
@@ -38,18 +38,24 @@ exit;
 
 while($row = $result->fetch_assoc()) {
 
+if ($row['sex']==1) {
+  $sexx = '男';
+}else {
+  $sexx = '女';
+}
+
   echo "用户名：".$row['uname']
         ."<br>头像:<image src='".$row['avatar']."' width='80px'>"
       ."<br>密码:".$row['pwd']
       ."<br>手机号:".$row['tel']
-      ."<br>性别:".$row['sex']
-      ."<br>邮箱:".$row['email']
-      ."<br>密码:".$row['pwd'];
+      ."<br>性别:".$sexx
+      ."<br>邮箱:".$row['email'];
 
 }
 
  ?>
  </p>
+ <p style='font-size:30px'><a href="/user/edituserinfo.php?uid=<?php echo $uid?>">修改信息</a></p>
 <p style='font-size:30px'><a href="/user/upload.php?uid=<?php echo $uid?>">上传头像</a></p>
 <p style='font-size:30px'><a href="/user/order.php?uid=<?php echo $uid?>">我的订单</a></p>
 </div>

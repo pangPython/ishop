@@ -8,12 +8,12 @@ $goods_id = $_REQUEST['id'];
    <!DOCTYPE>
    <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <title>商品</title>
-   <link rel="stylesheet" type="text/css" href="./images/general.css">
-   <link rel="stylesheet" type="text/css" href="./images/goods.css">
-   <script type="text/javascript" src="./images/jquery.js"></script>
-   <script type="text/javascript" src="./images/jquery.zoom.min.js"></script>
-   <script type="text/javascript" src="./images/general.js"></script>
-   <script type="text/javascript" src="./images/goods.js"></script>
+   <link rel="stylesheet" type="text/css" href="./css/general.css">
+   <link rel="stylesheet" type="text/css" href="./css/goods.css">
+   <script type="text/javascript" src="./js/jquery.js"></script>
+   <script type="text/javascript" src="./js/jquery.zoom.min.js"></script>
+   <script type="text/javascript" src="./js/general.js"></script>
+   <script type="text/javascript" src="./js/goods.js"></script>
    </head>
    <body>
 
@@ -76,13 +76,27 @@ echo $row['goods_name'];
  ?>
              </dd>
            </dl>
+            <dl class="mt5">
+             <dt>原价:</dt>
+             <dd class="npri"><del><i>¥</i><font id="nowprice" data-price="89.00">
+<?php echo $row['old_price']; ?>
 
-                   <dl class="mt5">
-             <dt>价格:</dt>
+             </font></del></dd>
+           </dl>
+            <dl class="mt5">
+             <dt>现价:</dt>
              <dd class="npri"><i>¥</i><font id="nowprice" data-price="89.00">
 <?php echo $row['price']; ?>
 
              </font></dd>
+           </dl>
+             <dl>
+             <dt>详细介绍:</dt>
+             <dd>
+<?php
+  echo $row['description'];
+ ?>
+             </dd>
            </dl>
                  </div>
                  <?php
