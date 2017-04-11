@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-11 19:04:18
+Date: 2017-04-11 19:24:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,13 +61,15 @@ CREATE TABLE `cart` (
   `goods_id` int(11) NOT NULL,
   `count` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cart
 -- ----------------------------
 INSERT INTO `cart` VALUES ('1', '1', '1', '222');
 INSERT INTO `cart` VALUES ('2', '1', '1', '1');
+INSERT INTO `cart` VALUES ('3', '1', '1', '1');
+INSERT INTO `cart` VALUES ('4', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for `goods`

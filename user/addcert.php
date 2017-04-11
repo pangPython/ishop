@@ -46,7 +46,21 @@ exit;
       $sql = "INSERT INTO cart(user_id,goods_id,count) VALUES(".$uid.",".$gid.",".$count.")";
 
       if ($conn->query($sql) === TRUE) {
-          echo "添加购物车成功！";
+          echo "添加购物车成功！正在跳转回原页面...";
+          ?>
+          <script type="text/javascript">
+          //休眠5秒，跳转广告列表
+          $(function() {
+          sleep(500);
+          location.href="/goods.php?id=<?php echo $gid?>&uid=<?php echo $uid ?>";
+          });
+
+          function sleep(n) { //n表示的毫秒数
+           var start = new Date().getTime();
+           while (true) if (new Date().getTime() - start > n) break;
+          }
+          </script>
+          <?php
       }else {
         echo "添加购物车失败！请检查是否填写商品数量！";
       }
